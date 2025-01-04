@@ -1,0 +1,88 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import { Button } from '@/components/ui/button';
+import { ArrowDown, Github, Mail, Linkedin } from 'lucide-react';
+import Map from '@/components/react/Map';
+import AnimatedText from '@/components/react/AnimatedText';
+import AnimatedSocials from '@/components/react/AnimatedSocials';
+import Tech from '@/components/Tech.astro';
+import Projects from '@/components/Projects.astro';
+---
+
+<Layout title="Your Name | Portfolio">
+  <!-- Hero Section -->
+  <div class="lazyload shaded relative h-screen">
+    <video 
+      autoplay 
+      loop 
+      muted 
+      class="h-full w-full object-cover"
+    >
+      <source src="/assets/waves.mp4" type="video/mp4">
+    </video>
+    <div class="darken absolute inset-0 bg-black/20"></div>
+    <div class="absolute inset-0 flex flex-col items-center justify-center text-white p-8 z-10">
+      <div class="space-y-6 text-center">
+        <h1 class="text-5xl md:text-7xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-white to-gray-300 drop-shadow-lg flex flex-col">
+          <AnimatedText
+            text="Stefano"
+            className="bg-clip-text text-transparent bg-gradient-to-r from-white to-gray-300"
+            client:load
+          />
+          <AnimatedText
+            text="D'Ambrosio"
+            delay={0.4}
+            className="bg-clip-text text-transparent bg-gradient-to-r from-white to-gray-300"
+            client:load
+          />
+        </h1>
+        <AnimatedText
+          text="Front End Developer"
+          delay={0}
+          className="text-xl md:text-2xl text-gray-200 font-light tracking-wide"
+          client:load
+        />
+        <AnimatedSocials client:load />
+        <a 
+          href="#about" 
+          class="absolute bottom-8 left-1/2 -translate-x-1/2 text-white animate-bounce hover:text-primary transition-colors"
+          aria-label="Scroll to About section"
+        >
+          <ArrowDown size={24} />
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- <Map client:only
+    center={[12.5683, 44.0574]}
+    zoom={10}
+    marker={{
+      coordinates: [12.5683, 44.0574]
+    }}
+  /> -->
+  <!-- About Section -->
+  <Tech />
+
+  <!-- Projects Section -->
+  <Projects />
+
+  <!-- Contact Section -->
+  <section id="contact" class="py-20 bg-background">
+    <div class="container mx-auto px-4">
+      <h2 class="text-3xl md:text-4xl font-bold mb-8 text-center">Get In Touch</h2>
+      <div class="max-w-md mx-auto text-center">
+        <p class="text-lg text-muted-foreground mb-8">
+          I'm always open to new opportunities and collaborations. 
+          Feel free to reach out if you'd like to work together!
+        </p>
+        <a href="mailto:your.email@example.com">
+          <Button size="lg" className="rounded-full">
+            <Mail className="h-5 w-5 mr-2" />
+            Contact Me
+          </Button>
+        </a>
+      </div>
+    </div>
+  </section>
+</Layout>

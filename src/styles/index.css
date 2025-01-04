@@ -1,0 +1,63 @@
+:root {
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+  scroll-behavior: smooth;
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+
+  background-color: var(--background);
+  color: var(--text);
+  transition: all 0.3s ease;
+}
+
+.hide {
+  opacity: 0;
+  visibility: hidden;
+  transition:
+    opacity 0.3s ease-in-out,
+    visibility 0s linear 0.3s;
+}
+
+/* Add smooth transitions to all interactive elements */
+a, button {
+  transition: all 0.2s ease;
+}
+
+/* Enhance text selection */
+::selection {
+  background: var(--primary);
+  color: var(--background);
+}
+
+/* Add a subtle gradient to sections */
+section {
+  position: relative;
+  background-image: radial-gradient(
+    circle at center,
+    var(--background) 0%,
+    var(--muted) 100%
+  );
+  background-size: 200% 200%;
+  animation: gradientMove 15s ease infinite;
+}
+
+@keyframes gradientMove {
+  0% { background-position: 0% 0%; }
+  50% { background-position: 100% 100%; }
+  100% { background-position: 0% 0%; }
+}

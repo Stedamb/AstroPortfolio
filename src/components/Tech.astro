@@ -1,0 +1,80 @@
+---
+const technologies = [
+  {
+    name: 'Astro',
+    outline: '/sprites/astro-outline.svg',
+    filled: '/sprites/astro.svg',
+    gradient: 'bg-gradient-to-br from-red-500/10 to-orange-500/10',
+    border: 'hover:border-orange-600',
+  },
+  {
+    name: 'Next.js',
+    outline: '/sprites/nextjs-outline.svg',
+    filled: '/sprites/nextjs.svg',
+    gradient: 'bg-gradient-to-br from-zinc-500/10 to-slate-500/10',
+    border: 'hover:border-slate-300',
+  },
+  {
+    name: 'React',
+    outline: '/sprites/react-outline.svg',
+    filled: '/sprites/react.svg',
+    gradient: 'bg-gradient-to-br from-blue-500/10 to-cyan-500/10',
+    border: 'hover:border-cyan-600',
+  },
+] as const;
+---
+
+<section id="tech" class="relative overflow-hidden py-20">
+  <!-- Background gradients -->
+  <div class="absolute inset-0 bg-background">
+    <div
+      class="absolute inset-0 bg-[radial-gradient(at_47%_33%,hsl(0,0%,100%)_0,transparent_59%)] opacity-10"
+    >
+    </div>
+  </div>
+
+  <div class="relative mx-auto max-w-3xl px-4">
+    <h2 class="mb-8 text-center text-3xl font-bold md:text-4xl">Tech I Use</h2>
+    <div class="flex flex-col items-center justify-center gap-4">
+      <div
+        class="grid grid-cols-2 gap-4 rounded-xl border border-white/[0.125] bg-white/5 p-6 backdrop-blur-xl backdrop-saturate-[180%]"
+      >
+        {
+          technologies.map((tech) => (
+            <div
+              class={`group relative rounded-lg p-6 backdrop-blur-sm transition-all duration-300 ${tech.name === 'React' ? 'col-span-2' : ''} ${tech.gradient} border border-white/[0.125] bg-white/5 hover:bg-white/10 cursor-pointer ${tech.border} `}
+            >
+              <div class="flex items-center justify-between">
+                <div class="flex flex-col">
+                  <h3 class="mb-2 text-xl font-semibold transition-colors duration-300">
+                    {tech.name}
+                  </h3>
+                  <p class="text-sm text-muted-foreground/80">
+                    {tech.name === 'React' &&
+                      'The most popular JavaScript library for building user interfaces. It allows you to create dynamic and interactive web applications with ease.'}
+                    {tech.name === 'Astro' &&
+                      'The all-in-one web framework designed for speed and content-focused websites.'}
+                    {tech.name === 'Next.js' &&
+                      'The React framework for production, offering hybrid static & server rendering.'}
+                  </p>
+                </div>
+                <div class="relative overflow-hidden h-[100px] w-[200px]">
+                  <img
+                    src={tech.outline}
+                    alt={`${tech.name} Outline`}
+                    class="absolute inset-0 h-full w-full object-contain transition-opacity duration-300 transform scale-150"
+                  />
+                  <img
+                    src={tech.filled}
+                    alt={tech.name}
+                    class="absolute inset-0 h-full w-full object-contain opacity-0 backdrop-blur-md transition-opacity duration-300 group-hover:opacity-100 transform scale-150 "
+                  />
+                </div>
+              </div>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </div>
+</section>

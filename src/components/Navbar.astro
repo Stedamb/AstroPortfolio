@@ -1,0 +1,29 @@
+---
+import { Button } from '@/components/ui/button';
+import MobileMenu from '@/components/react/MobileMenu';
+import { Phone } from 'lucide-astro';
+import { routes } from '@/routes/routes';
+
+// Get current path to determine if we're on home page
+const currentPath = Astro.url.pathname;
+const isHomePage = currentPath === '/';
+---
+
+<div class="absolute left-0 top-0 z-50 w-full">
+  {/* Mobile Menu */}
+  <!-- <MobileDrawer client:load /> -->
+   <MobileMenu client:load />
+
+  {/* Desktop Menu */}
+  <div class="hidden gap-4 p-6 md:flex">
+    {
+      routes.map((route) => (
+        <Button variant="link" size="sm">
+          <a class="text-2xl text-foreground opacity-90" href={route.href}>
+            {route.name}
+          </a>
+        </Button>
+      ))
+    }
+  </div>
+</div>
