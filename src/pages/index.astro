@@ -1,59 +1,21 @@
 ---
 import Layout from '@/layouts/Layout.astro';
-import { Button } from '@/components/ui/button';
-import { ArrowDown, Github, Mail, Linkedin } from 'lucide-react';
-import Map from '@/components/react/Map';
-import AnimatedText from '@/components/react/AnimatedText';
-import AnimatedSocials from '@/components/react/AnimatedSocials';
 import Tech from '@/components/Tech.astro';
 import Projects from '@/components/Projects.astro';
 import Contact from '@/components/Contact.astro';
+import Hero from '@/components/Hero.astro';
 ---
 
 <Layout title="Your Name | Portfolio">
   <!-- Hero Section -->
-  <div class="lazyload shaded relative h-screen">
-    <video autoplay loop muted class="h-full w-full object-cover">
-      <source src="/assets/waves.mp4" type="video/mp4" />
-    </video>
-    <div class="darken absolute inset-0 bg-black/20"></div>
-    <div class="absolute inset-0 z-10 flex flex-col items-center justify-center p-8">
-      <div class="space-y-6 text-center">
-        <AnimatedText
-          text="Stefano"
-          className="text-4xl font-serif italic xl:text-5xl tracking-wide text-white/90"
-          client:load
-        />
-        <AnimatedText
-          text="D'Ambrosio"
-          delay={0.4}
-          className="text-4xl font-serif italic xl:text-5xl tracking-wide text-white/90"
-          client:load
-        />
-        <AnimatedText
-          text="Front End Developer"
-          delay={0}
-          className="text-lg font-light mt-2 tracking-wide text-gray-200 md:text-lg"
-          client:load
-        />
-        <AnimatedSocials client:load />
-        <a
-          href="#about"
-          class="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce text-white transition-colors hover:text-primary"
-          aria-label="Scroll to About section"
-        >
-          <ArrowDown size={24} />
-        </a>
-      </div>
-    </div>
-  </div>
+  <Hero />
 
-  <!-- About Section -->
-  <Tech client:visible />
+  <!-- Tech Section -->
+  <Tech />
 
   <!-- Projects Section -->
-  <Projects client:visible />
+  <Projects />
 
   <!-- Contact Section -->
-  <Contact client:visible />
+  <Contact />
 </Layout>
