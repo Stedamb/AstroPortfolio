@@ -11,8 +11,8 @@ interface Props {
 }
 
 const { 
-  title = "Astro Template",
-  description = "Astro Template - Description" 
+  title = "Stefano D'Ambrosio - Portfolio",
+  description = "Portfolio website featuring projects, technologies, and contact information for Stefano D'Ambrosio.", 
 } = Astro.props;
 ---
 
@@ -26,6 +26,15 @@ const {
     <meta name="generator" content={Astro.generator} />
 
     <title>{title}</title>
+    <!-- Favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="/sprites/astro.svg">
+    <link rel="icon" type="image/png" sizes="32x32" href="/sprites/astro.svg">
+    <link rel="icon" type="image/png" sizes="16x16" href="/sprites/astro.svg">
+    <link rel="manifest" href="/site.webmanifest">
+    <link rel="mask-icon" href="/sprites/astro.svg" color="#000000">
+    <meta name="msapplication-TileColor" content="#000000">
+    <meta name="theme-color" content="#000000">
+
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
