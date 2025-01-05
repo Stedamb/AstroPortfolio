@@ -144,7 +144,8 @@ export default function ContactForm() {
         <Button 
           type="submit" 
           size="lg" 
-          className="rounded-full w-full flex-none backdrop-blur-md transition-all duration-300 bg-gradient-to-br from-purple-500/10 to-pink-500/10 border border-white/[0.125] hover:bg-white/10 hover:border-pink-600 flex gap-2 items-center justify-center"
+          variant="glass"
+          className="rounded-lg w-full flex-none transition-all duration-300 bg-gradient-to-br from-blue-500/10 to-cyan-500/10 backdrop-blur-sm border border-white/20 hover:bg-white/20 hover:border-white/30 flex gap-2 items-center justify-center"
           disabled={isSubmitting}
         >
           <Mail className="h-5 w-5" />

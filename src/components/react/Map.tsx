@@ -51,7 +51,7 @@ interface MapProps {
 export default function Map({
   center = [-74.5, 40],
   zoom = 9,
-  className = 'size-full rounded-lg',
+  className = 'size-full min-h-[300px] rounded-lg',
   marker
 }: MapProps) {
   const mapContainer = useRef<HTMLDivElement | null>(null);
