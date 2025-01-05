@@ -145,7 +145,7 @@ export default function ContactForm() {
           type="submit" 
           size="lg" 
           variant="glass"
-          className="rounded-lg w-full flex-none transition-all duration-300 bg-gradient-to-br from-blue-500/10 to-cyan-500/10 backdrop-blur-sm border border-white/20 hover:bg-white/20 hover:border-white/30 flex gap-2 items-center justify-center"
+          className="rounded-lg w-full flex-none transition-colors duration-200 bg-gradient-to-br from-blue-500/10 to-cyan-500/10 border border-white/20 hover:bg-white/20 hover:border-white/30 flex gap-2 items-center justify-center"
           disabled={isSubmitting}
         >
           <Mail className="h-5 w-5" />

@@ -37,15 +37,15 @@ const technologies = [
     <h2 class="mb-8 text-center text-3xl font-bold md:text-4xl">Tech I Use</h2>
     <div class="flex flex-col items-center justify-center gap-4">
       <div
-        class="grid grid-cols-2 gap-4 rounded-xl border border-white/[0.125] bg-white/5 p-6 backdrop-blur-xl backdrop-saturate-[180%]"
+        class="grid grid-cols-2 gap-2 lg:gap-4 rounded-xl border border-white/[0.125] bg-black/20 p-2 lg:p-4"
       >
         {
           technologies.map((tech) => (
             <div
-              class={`group relative rounded-lg p-6 backdrop-blur-sm transition-all duration-300 ${tech.name === 'React' ? 'col-span-2' : ''} ${tech.gradient} border border-white/[0.125] bg-white/5 hover:bg-white/10 cursor-pointer ${tech.border} `}
+              class={`group relative rounded-lg overflow-hidden p-6 backdrop-blur-sm transition-all duration-300 ${tech.name === 'React' ? 'col-span-2' : ''} ${tech.gradient} border border-white/[0.125] bg-white/5 hover:bg-white/10 cursor-pointer ${tech.border} `}
             >
               <div class="flex items-center justify-between">
-                <div class="flex flex-col">
+                <div class="flex flex-col group-hover:opacity-0 lg:group-hover:opacity-100 transition-opacity duration-300">
                   <h3 class="mb-2 text-xl font-semibold transition-colors duration-300">
                     {tech.name}
                   </h3>
@@ -67,7 +67,7 @@ const technologies = [
                   <img
                     src={tech.filled}
                     alt={tech.name}
-                    class="absolute inset-0 h-full w-full object-contain opacity-20 lg:opacity-0 backdrop-blur-md transition-opacity duration-300 group-hover:opacity-100 transform scale-150"
+                    class="absolute inset-0 h-full w-full object-contain opacity-10 lg:opacity-0 backdrop-blur-md transition-opacity duration-300 group-hover:opacity-100 transform scale-150"
                   />
                 </div>
               </div>

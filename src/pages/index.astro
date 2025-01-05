@@ -13,40 +13,33 @@ import Contact from '@/components/Contact.astro';
 <Layout title="Your Name | Portfolio">
   <!-- Hero Section -->
   <div class="lazyload shaded relative h-screen">
-    <video 
-      autoplay 
-      loop 
-      muted 
-      class="h-full w-full object-cover"
-    >
-      <source src="/assets/waves.mp4" type="video/mp4">
+    <video autoplay loop muted class="h-full w-full object-cover">
+      <source src="/assets/waves.mp4" type="video/mp4" />
     </video>
     <div class="darken absolute inset-0 bg-black/20"></div>
-    <div class="absolute inset-0 flex flex-col items-center justify-center text-white p-8 z-10">
+    <div class="absolute inset-0 z-10 flex flex-col items-center justify-center p-8">
       <div class="space-y-6 text-center">
-        <h1 class="text-5xl md:text-7xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-white to-gray-300 drop-shadow-lg flex flex-col">
-          <AnimatedText
-            text="Stefano"
-            className="bg-clip-text text-transparent bg-gradient-to-r from-white to-gray-300"
-            client:load
-          />
-          <AnimatedText
-            text="D'Ambrosio"
-            delay={0.4}
-            className="bg-clip-text text-transparent bg-gradient-to-r from-white to-gray-300"
-            client:load
-          />
-        </h1>
+        <AnimatedText
+          text="Stefano"
+          className="text-4xl font-serif italic xl:text-5xl tracking-wide text-white/90"
+          client:load
+        />
+        <AnimatedText
+          text="D'Ambrosio"
+          delay={0.4}
+          className="text-4xl font-serif italic xl:text-5xl tracking-wide text-white/90"
+          client:load
+        />
         <AnimatedText
           text="Front End Developer"
           delay={0}
-          className="text-xl md:text-2xl text-gray-200 font-light tracking-wide"
+          className="text-lg font-light mt-2 tracking-wide text-gray-200 md:text-lg"
           client:load
         />
         <AnimatedSocials client:load />
-        <a 
-          href="#about" 
-          class="absolute bottom-8 left-1/2 -translate-x-1/2 text-white animate-bounce hover:text-primary transition-colors"
+        <a
+          href="#about"
+          class="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce text-white transition-colors hover:text-primary"
           aria-label="Scroll to About section"
         >
           <ArrowDown size={24} />
@@ -56,11 +49,11 @@ import Contact from '@/components/Contact.astro';
   </div>
 
   <!-- About Section -->
-  <Tech />
+  <Tech client:visible />
 
   <!-- Projects Section -->
-  <Projects />
+  <Projects client:visible />
 
   <!-- Contact Section -->
-  <Contact />
+  <Contact client:visible />
 </Layout>
