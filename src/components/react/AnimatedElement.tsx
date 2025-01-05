@@ -1,12 +1,15 @@
 import { motion } from "framer-motion";
+import type { HTMLMotionProps } from "framer-motion";
 import type { ReactElement, HTMLAttributes } from "react";
 
-interface Props extends HTMLAttributes<HTMLElement> {
+type MotionComponent = keyof typeof motion;
+
+interface Props extends HTMLMotionProps<"div"> {
   children: ReactElement | ReactElement[];
   className?: string;
   delay?: number;
   duration?: number;
-  as?: keyof typeof motion;
+  as?: MotionComponent;
   animation?: "fadeUp" | "fadeIn" | "stagger";
 }
 
@@ -55,7 +58,7 @@ export default function AnimatedElement({
   animation = "fadeUp",
   ...props
 }: Props) {
-  const Component = motion[as];
+  const Component = motion[as] as typeof motion.div;
   const selectedAnimation = animations[animation];
 
   return (
