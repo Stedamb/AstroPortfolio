@@ -7,6 +7,37 @@ import 'mapbox-gl/dist/mapbox-gl.css';
 // Initialize Mapbox access token
 mapboxgl.accessToken = 'pk.eyJ1Ijoic3RlMjAwMCIsImEiOiJja3IyNmVxamoyOGtjMndvNndhamd3MXF4In0.hk7-ko-5zYmdaM8sI6vO6w';
 
+// Custom CSS for the popup
+const popupStyle = `
+  .mapboxgl-popup-content {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.125);
+    border-radius: 0.5rem;
+    padding: 0.75rem 1rem;
+    color: white;
+    font-size: 1rem;
+    display: flex;
+    gap: 0.5rem;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  }
+  .mapboxgl-popup-tip {
+    display: none;
+  }
+  .mapboxgl-popup-close-button {
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 1rem;
+    line-height: 0;
+    position: relative;
+  }
+  .mapboxgl-popup-close-button:hover, .mapboxgl-popup-close-button:focus {
+    color: white;
+    background: none;
+    border: none;
+    outline: none;
+  }
+`;
+
 interface MapProps {
   center?: [number, number];
   zoom?: number;
@@ -20,7 +51,7 @@ interface MapProps {
 export default function Map({
   center = [-74.5, 40],
   zoom = 9,
-  className = 'size-full rounded-3xl',
+  className = 'size-full rounded-lg',
   marker
 }: MapProps) {
   const mapContainer = useRef<HTMLDivElement | null>(null);
@@ -28,7 +59,10 @@ export default function Map({
   const [mapError, setMapError] = useState<string | null>(null);
 
   useEffect(() => {
-
+    // Add custom popup styles
+    const styleSheet = document.createElement('style');
+    styleSheet.textContent = popupStyle;
+    document.head.appendChild(styleSheet);
 
     if (!mapContainer.current || map.current) return;
 
@@ -57,7 +91,16 @@ export default function Map({
             .addTo(map.current!);
 
           if (marker?.popupContent) {
-            const popup = new mapboxgl.Popup({ offset: 25 }).setHTML(marker.popupContent);
+            const popup = new mapboxgl.Popup({
+              offset: 40,
+              closeButton: true,
+              closeOnClick: false,
+              maxWidth: '300px'
+            }).setHTML(`
+              <div class="font-medium">
+                ${marker.popupContent}
+              </div>
+            `);
             markerInstance.setPopup(popup);
           }
         }
@@ -69,6 +112,8 @@ export default function Map({
           map.current.remove();
           map.current = null;
         }
+        // Remove custom styles
+        document.head.removeChild(styleSheet);
       };
     } catch (error) {
       console.error('Map initialization error:', error);

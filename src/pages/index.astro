@@ -7,6 +7,7 @@ import AnimatedText from '@/components/react/AnimatedText';
 import AnimatedSocials from '@/components/react/AnimatedSocials';
 import Tech from '@/components/Tech.astro';
 import Projects from '@/components/Projects.astro';
+import Contact from '@/components/Contact.astro';
 ---
 
 <Layout title="Your Name | Portfolio">
@@ -54,13 +55,6 @@ import Projects from '@/components/Projects.astro';
     </div>
   </div>
 
-  <!-- <Map client:only
-    center={[12.5683, 44.0574]}
-    zoom={10}
-    marker={{
-      coordinates: [12.5683, 44.0574]
-    }}
-  /> -->
   <!-- About Section -->
   <Tech />
 
@@ -68,21 +62,5 @@ import Projects from '@/components/Projects.astro';
   <Projects />
 
   <!-- Contact Section -->
-  <section id="contact" class="py-20 bg-background">
-    <div class="container mx-auto px-4">
-      <h2 class="text-3xl md:text-4xl font-bold mb-8 text-center">Get In Touch</h2>
-      <div class="max-w-md mx-auto text-center">
-        <p class="text-lg text-muted-foreground mb-8">
-          I'm always open to new opportunities and collaborations. 
-          Feel free to reach out if you'd like to work together!
-        </p>
-        <a href="mailto:your.email@example.com">
-          <Button size="lg" className="rounded-full">
-            <Mail className="h-5 w-5 mr-2" />
-            Contact Me
-          </Button>
-        </a>
-      </div>
-    </div>
-  </section>
+  <Contact />
 </Layout>

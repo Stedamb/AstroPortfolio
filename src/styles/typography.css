@@ -9,12 +9,12 @@ body {
 }
 
 html {
-  font-size: 14px !important;
+  font-size: 16px !important;
 }
 
 @media screen and (min-width: 768px) {
   html {
-    font-size: 16px !important;
+    font-size: 20px !important;
   }
 }
 
