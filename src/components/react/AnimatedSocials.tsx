@@ -34,7 +34,7 @@ export default function AnimatedSocials() {
       animate="show"
     >
       <motion.a 
-        href="https://github.com/yourusername" 
+        href="https://github.com/Stedamb" 
         target="_blank" 
         rel="noopener noreferrer" 
         className="transform hover:scale-110 transition-transform"
@@ -46,7 +46,7 @@ export default function AnimatedSocials() {
       </motion.a>
       
       <motion.a 
-        href="https://linkedin.com/in/yourusername" 
+        href="https://linkedin.com/in/ste-damb" 
         target="_blank" 
         rel="noopener noreferrer" 
         className="transform hover:scale-110 transition-transform"
@@ -58,7 +58,7 @@ export default function AnimatedSocials() {
       </motion.a>
       
       <motion.a 
-        href="mailto:your.email@example.com" 
+        href="mailto:stedamb@protonmail.com" 
         className="transform hover:scale-110 transition-transform"
         variants={item}
       >

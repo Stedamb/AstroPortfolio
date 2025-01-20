@@ -8,13 +8,12 @@ const currentPath = Astro.url.pathname;
 const isHomePage = currentPath === '/';
 ---
 
-<div class="absolute left-0 top-0 z-50 w-full">
+<div id="navbar" class="absolute left-0 top-0 z-50 w-full transition-all duration-300 transform">
   {/* Mobile Menu */}
-  <!-- <MobileDrawer client:load /> -->
-   <MobileMenu client:load />
+  <MobileMenu client:load />
 
   {/* Desktop Menu */}
-  <div class="hidden gap-4 p-6 md:flex md:justify-center">
+  <div class="hidden gap-4 p-6 justify-center lg:flex">
     {
       routes.map((route) => (
         <Button variant="link" size="sm">
@@ -26,3 +25,40 @@ const isHomePage = currentPath === '/';
     }
   </div>
 </div>
+
+  <script>
+    const navbar = document.getElementById('navbar');
+    let lastScroll = window.scrollY;
+    
+    const handleScroll = () => {
+      const currentScroll = window.scrollY;
+      
+      if (currentScroll > window.innerHeight * 0.8) {
+        // After 80%, show navbar with animation
+        navbar?.classList.remove('absolute', 'hidden');
+        navbar?.classList.add('fixed', 'bg-background/80', 'backdrop-blur-lg', 'shadow-md');
+        
+        if (currentScroll < lastScroll) {
+          // Scrolling up after 80%
+          navbar?.classList.remove('-translate-y-full');
+          navbar?.classList.add('translate-y-0');
+        } else {
+          // Scrolling down after 80%
+          navbar?.classList.remove('translate-y-0');
+          navbar?.classList.add('-translate-y-full');
+        }
+      } else if (currentScroll > window.innerHeight * 0.5) {
+        // Between 50% and 80%, hide navbar
+        navbar?.classList.remove('absolute', 'translate-y-0');
+        navbar?.classList.add('hidden', 'fixed', '-translate-y-full', 'bg-background/80', 'backdrop-blur-lg', 'shadow-md');
+      } else {
+        // Before 50%, show navbar at top
+        navbar?.classList.remove('hidden', 'fixed', '-translate-y-full', 'translate-y-0', 'bg-background/80', 'backdrop-blur-lg', 'shadow-md');
+        navbar?.classList.add('absolute');
+      }
+      
+      lastScroll = currentScroll;
+    };
+  
+    window.addEventListener('scroll', handleScroll);
+  </script>

@@ -1,13 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
-
-const menuItems = [
-  { title: 'Home', href: '/' },
-  { title: 'About', href: '/about' },
-  { title: 'Projects', href: '/projects' },
-  { title: 'Contact', href: '/contact' },
-];
+import routes from '../../routes/routes';
 
 const MobileMenu = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -92,26 +86,30 @@ const MobileMenu = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 bg-black/60 backdrop-blur-lg"
+            className="fixed inset-0 bg-black/60 backdrop-blur-lg min-h-screen"
           >
-            <div className="flex flex-col items-center justify-center h-full">
+            <div className="flex flex-col items-center justify-center min-h-screen">
               <motion.nav
                 initial="closed"
                 animate="open"
                 exit="closed"
                 variants={menuVariants}
-                className="flex flex-col items-center gap-8"
+                className="flex flex-col items-center gap-12 py-8"
               >
-                {menuItems.map((item) => (
+                {routes.map((item) => (
                   <motion.a
-                    key={item.title}
+                    key={item.name}
                     href={item.href}
                     variants={itemVariants}
                     className="text-2xl text-foreground hover:text-primary transition-colors relative group"
                     whileHover={{ scale: 1.1 }}
                     whileTap={{ scale: 0.95 }}
+                    onClick={() => {
+                      setIsOpen(false);
+                      document.body.style.overflow = 'unset';
+                    }}
                   >
-                    {item.title}
+                    {item.name}
                     <motion.span
                       className="absolute -bottom-2 left-0 w-0 h-0.5 bg-gradient-to-r from-primary to-primary/50 group-hover:w-full transition-all duration-300"
                       whileHover={{ width: "100%" }}
