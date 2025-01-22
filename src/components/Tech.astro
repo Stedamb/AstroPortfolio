@@ -1,21 +1,24 @@
 ---
 const technologies = [
   {
-    name: 'Astro',
+    name: '🚀 Astro',
+    description: 'The all-in-one web framework designed for speed and content-focused websites.',
     outline: '/sprites/astro-outline.svg',
     filled: '/sprites/astro.svg',
     gradient: 'bg-gradient-to-br from-red-500/10 to-orange-500/10',
     border: 'hover:border-orange-600',
   },
   {
-    name: 'Next.js',
+    name: '🔼 Next.js',
+    description: 'The React framework for production, offering hybrid static & server rendering.',
     outline: '/sprites/nextjs-outline.svg',
     filled: '/sprites/nextjs.svg',
     gradient: 'bg-gradient-to-br from-zinc-500/10 to-slate-500/10',
     border: 'hover:border-slate-300',
   },
   {
-    name: 'React',
+    name: '⚛️ React',
+    description: 'The most popular JavaScript library for building user interfaces. It allows you to create dynamic and interactive web applications with ease.',
     outline: '/sprites/react-outline.svg',
     filled: '/sprites/react.svg',
     gradient: 'bg-gradient-to-br from-blue-500/10 to-cyan-500/10',
@@ -34,7 +37,7 @@ const technologies = [
   </div>
 
   <div class="relative mx-auto max-w-3xl px-4">
-    <h2 class="mb-8 text-center text-3xl font-bold md:text-4xl">Tech I Use</h2>
+    <h2 class="mb-8 text-center text-3xl font-normal font-serif italic md:text-4xl">Tech I Use</h2>
     <div class="flex flex-col items-center justify-center gap-4">
       <div
         class="grid grid-cols-2 gap-2 lg:gap-4 rounded-xl border border-white/[0.125] bg-black/20 p-2 lg:p-4"
@@ -42,7 +45,7 @@ const technologies = [
         {
           technologies.map((tech) => (
             <div
-              class={`group relative rounded-lg overflow-hidden p-6 backdrop-blur-sm transition-all duration-300 ${tech.name === 'React' ? 'col-span-2' : ''} ${tech.gradient} border border-white/[0.125] bg-white/5 hover:bg-white/10 cursor-pointer ${tech.border} `}
+              class={`group relative rounded-lg overflow-hidden p-6 backdrop-blur-sm transition-all duration-300 ${tech.name === '⚛️ React' ? 'col-span-2' : ''} ${tech.gradient} border border-white/[0.125] bg-white/5 hover:bg-white/10 cursor-pointer ${tech.border} `}
             >
               <div class="flex items-center justify-between">
                 <div class="flex flex-col lg:group-hover:opacity-100 transition-opacity duration-300">
@@ -50,24 +53,19 @@ const technologies = [
                     {tech.name}
                   </h3>
                   <p class="text-sm text-foreground lg:text-muted-foreground/80">
-                    {tech.name === 'React' &&
-                      'The most popular JavaScript library for building user interfaces. It allows you to create dynamic and interactive web applications with ease.'}
-                    {tech.name === 'Astro' &&
-                      'The all-in-one web framework designed for speed and content-focused websites.'}
-                    {tech.name === 'Next.js' &&
-                      'The React framework for production, offering hybrid static & server rendering.'}
+                    {tech.description}
                   </p>
                 </div>
                 <div class="-z-10 lg:relative lg:overflow-hidden lg:h-[100px] lg:w-[200px]">
                   <img
                     src={tech.outline}
                     alt={`${tech.name} Outline`}
-                    class="absolute opacity-0 lg:opacity-100 inset-0 h-full w-full object-contain transition-opacity duration-300 transform scale-150"
+                    class="absolute opacity-0 lg:opacity-100 lg:group-hover:opacity-0 inset-0 h-full w-full object-contain transition-opacity duration-300 transform scale-150"
                   />
                   <img
                     src={tech.filled}
                     alt={tech.name}
-                    class="absolute inset-0 h-full w-full object-contain opacity-10 lg:opacity-0 backdrop-blur-md transition-opacity duration-300 group-hover:opacity-20 lg:group-hover:opacity-100 transform scale-150"
+                    class="absolute inset-0 h-full w-full object-contain opacity-10 lg:opacity-0  transition-opacity duration-300 group-hover:opacity-20 lg:group-hover:opacity-100 transform scale-150"
                   />
                 </div>
               </div>

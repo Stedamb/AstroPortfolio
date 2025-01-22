@@ -86,7 +86,7 @@ const MobileMenu = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 bg-black/60 backdrop-blur-lg min-h-screen"
+            className="fixed inset-0 bg-black min-h-screen"
           >
             <div className="flex flex-col items-center justify-center min-h-screen">
               <motion.nav
@@ -101,7 +101,7 @@ const MobileMenu = () => {
                     key={item.name}
                     href={item.href}
                     variants={itemVariants}
-                    className="text-2xl text-foreground hover:text-primary transition-colors relative group"
+                    className="text-2xl text-foreground hover:text-primary font-serif italic transition-colors relative group"
                     whileHover={{ scale: 1.1 }}
                     whileTap={{ scale: 0.95 }}
                     onClick={() => {
