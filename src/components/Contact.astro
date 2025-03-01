@@ -27,14 +27,15 @@ import ContactForm from "./react/ContactForm";
         </div>
 
         <!-- Map Card -->
-        <div class="group p-2 relative rounded-lg transition-colors duration-200 bg-gradient-to-br from-purple-500/10 to-pink-500/10 border border-white/[0.125] bg-white/5 hover:bg-white/10 cursor-pointer hover:border-pink-600">
-          <Map client:load
+        <div class="group relative rounded-lg transition-colors duration-200 bg-gradient-to-br from-purple-500/10 to-pink-500/10 border border-white/[0.125] bg-white/5 hover:bg-white/10 cursor-pointer hover:border-pink-600">
+          <!-- <Map client:load
             center={[12.5683, 44.0574]}
             zoom={10}
             marker={{
               coordinates: [12.5683, 44.0574],
               popupContent: "Rimini, Italy"
-            }} />
+            }} /> -->
+             <img src="/sprites/map.svg" alt="Map" class="h-full w-full object-cover mix-blend-color-dodge" />
         </div>
 
         <!-- Social Links Card -->

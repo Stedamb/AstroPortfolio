@@ -1,10 +1,10 @@
 ---
 import { ArrowDown } from "lucide-react";
-import AnimatedSocials from "@/components/react/AnimatedSocials";
+import AnimatedSocials from "@/components/react/AnimatedButtons";
 import AnimatedText from "@/components/react/AnimatedText";
 ---
 
-<div class="lazyload shaded relative h-screen">
+<div class="lazyload shaded relative h-svh">
     <video autoplay loop muted class="h-full w-full object-cover">
       <source src="/assets/waves.webm" type="video/mp4" />
     </video>
@@ -29,13 +29,14 @@ import AnimatedText from "@/components/react/AnimatedText";
           client:load
         />
         <AnimatedSocials client:load />
-        <a
-          href="#about"
-          class="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce text-white transition-colors hover:text-primary"
+        <div class="absolute bottom-8 left-1/2 -ml-[12px] animate-bounce text-white transition-colors hover:text-primary">
+          <a
+          href="#tech"  
           aria-label="Scroll to About section"
-        >
+          >
           <ArrowDown size={24} />
         </a>
+        </div>
       </div>
     </div>
   </div>

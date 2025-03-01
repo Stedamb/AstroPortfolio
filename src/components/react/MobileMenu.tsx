@@ -49,7 +49,7 @@ const MobileMenu = () => {
     closed: {
       opacity: 0,
       y: 20,
-      rotate: -5,
+      rotate: 0,
     },
     open: {
       opacity: 1,
@@ -69,11 +69,10 @@ const MobileMenu = () => {
         onClick={toggleMenu}
         className="p-4 text-foreground hover:text-muted-foreground focus:outline-none relative opacity-75 z-50"
         aria-label="Toggle Menu"
-        whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.95 }}
       >
         <motion.div
-          animate={{ rotate: isOpen ? 180 : 0 }}
+          animate={{ rotate: isOpen ? 90 : 0 }}
           transition={{ type: "spring", stiffness: 300, damping: 30 }}
         >
           {isOpen ? <X size={40} /> : <Menu size={40} />}
