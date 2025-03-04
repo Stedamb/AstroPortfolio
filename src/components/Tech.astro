@@ -9,7 +9,7 @@ const technologies = [
     border: 'hover:border-orange-600',
   },
   {
-    name: '🔼 Next.js',
+    name: '<span class="filter grayscale">🔼</span> Next.js',
     description: 'The React framework for production, offering hybrid static & server rendering.',
     outline: '/sprites/nextjs-outline.svg',
     filled: '/sprites/nextjs.svg',
@@ -50,7 +50,7 @@ const technologies = [
               <div class="flex items-center justify-between">
                 <div class="flex flex-col lg:group-hover:opacity-100 transition-opacity duration-300">
                   <h3 class="mb-2 text-xl font-semibold transition-colors duration-300">
-                    {tech.name}
+                    <Fragment set:html={tech.name} />
                   </h3>
                   <p class="text-sm text-foreground lg:text-muted-foreground/80">
                     {tech.description}
