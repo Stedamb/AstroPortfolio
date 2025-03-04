@@ -127,7 +127,7 @@ export default function ContactForm() {
             control={form.control}
             name="message"
             render={({ field }) => (
-              <FormItem className="h-full">
+              <FormItem className="lg:h-full">
                 <FormControl>
                   <Textarea 
                     placeholder="Your Message" 
