@@ -10,9 +10,9 @@ interface Props {
   description?: string;
 }
 
-const { 
+const {
   title = "Stefano D'Ambrosio - Portfolio",
-  description = "Portfolio website featuring projects, technologies, and contact information for Stefano D'Ambrosio.", 
+  description = "Portfolio website featuring projects, technologies, and contact information for Stefano D'Ambrosio.",
 } = Astro.props;
 ---
 
@@ -26,14 +26,10 @@ const {
 
     <title>{title}</title>
 
-    <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon.png">
-    <meta name="theme-color" content="#000000">
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon.png" />
+    <meta name="theme-color" content="#000000" />
 
-
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&family=Roboto+Serif:ital,opsz,wght@0,8..144,100..900;1,8..144,100..900&display=swap" rel="stylesheet">
     <ClientRouter />
   </head>
   <body>
