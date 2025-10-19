@@ -67,7 +67,7 @@ const MobileMenu = () => {
     <div className="lg:hidden">
       <motion.button
         onClick={toggleMenu}
-        className="p-4 text-foreground hover:text-muted-foreground focus:outline-none relative opacity-75 z-50"
+        className="p-4 text-foreground hover:text-muted-foreground focus:outline-hidden relative opacity-75 z-50"
         aria-label="Toggle Menu"
         whileTap={{ scale: 0.95 }}
       >
@@ -110,7 +110,7 @@ const MobileMenu = () => {
                   >
                     {item.name}
                     <motion.span
-                      className="absolute -bottom-2 left-0 w-0 h-0.5 bg-gradient-to-r from-primary to-primary/50 group-hover:w-full transition-all duration-300"
+                      className="absolute -bottom-2 left-0 w-0 h-0.5 bg-linear-to-r from-primary to-primary/50 group-hover:w-full transition-all duration-300"
                       whileHover={{ width: "100%" }}
                     />
                   </motion.a>

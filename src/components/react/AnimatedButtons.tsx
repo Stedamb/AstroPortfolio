@@ -40,7 +40,7 @@ export default function AnimatedButtons() {
         variants={item}
 
       >
-        <Button variant="outline" size="icon" className="rounded-full bg-white/10 backdrop-blur-sm border-white/20 hover:bg-white/20">
+        <Button variant="outline" size="icon" className="rounded-full bg-white/10 backdrop-blur-xs border-white/20 hover:bg-white/20">
           <Github size={8} />
         </Button>
       </motion.a>
@@ -51,7 +51,7 @@ export default function AnimatedButtons() {
         rel="noopener noreferrer" 
         variants={item}
       >
-        <Button variant="outline" size="icon" className=" rounded-full bg-white/10 backdrop-blur-sm border-white/20 hover:bg-white/20">
+        <Button variant="outline" size="icon" className=" rounded-full bg-white/10 backdrop-blur-xs border-white/20 hover:bg-white/20">
           <Linkedin size={8} />
         </Button>
       </motion.a>
@@ -60,7 +60,7 @@ export default function AnimatedButtons() {
         href="mailto:stedamb@protonmail.com" 
         variants={item}
       >
-        <Button variant="outline" size="icon" className=" rounded-full bg-white/10 backdrop-blur-sm border-white/20 hover:bg-white/20">
+        <Button variant="outline" size="icon" className=" rounded-full bg-white/10 backdrop-blur-xs border-white/20 hover:bg-white/20">
           <Mail size={8} />
         </Button>
       </motion.a>
@@ -72,7 +72,7 @@ export default function AnimatedButtons() {
         className="col-span-3"
         variants={item}
       >
-        <Button variant="outline" size="fluid" className="rounded-full h-9 bg-white/10 backdrop-blur-sm border-white/20 hover:bg-white/20 group-hover">
+        <Button variant="outline" size="fluid" className="rounded-full h-9 bg-white/10 backdrop-blur-xs border-white/20 hover:bg-white/20 group-hover">
           <span>CV</span>
           <CircleArrowDown size={8} />
         </Button>

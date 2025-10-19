@@ -71,7 +71,7 @@ export function Lightbox({ images, currentIndex, onClose }: LightboxProps) {
               animate={{ y: 0, opacity: 1 }}
               exit={{ y: 20, opacity: 0 }}
               transition={{ delay: 0.1 }}
-              className="absolute bottom-0 left-0 right-0 bg-black/50 p-4 text-white backdrop-blur-sm"
+              className="absolute bottom-0 left-0 right-0 bg-black/50 p-4 text-white backdrop-blur-xs"
             >
               {images[currentIndex].title && (
                 <h3 className="text-lg font-semibold">{images[currentIndex].title}</h3>

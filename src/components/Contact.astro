@@ -14,9 +14,9 @@ import ContactForm from "./react/ContactForm";
   <div class="relative mx-auto max-w-6xl px-4">
     <h2 class="mb-8 text-center text-3xl font-normal font-serif italic md:text-4xl">Get In Touch</h2>
     <div class="flex flex-col items-center justify-center gap-4">
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-2 lg:gap-4 w-full rounded-xl border border-white/[0.125] bg-black/20 p-2 lg:p-4">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-2 lg:gap-4 w-full rounded-xl border border-white/12.5 bg-black/20 p-2 lg:p-4">
         <!-- Contact Form Card -->
-        <div class="md:row-span-2 group relative rounded-lg p-6 transition-colors duration-200 bg-gradient-to-br from-blue-500/10 to-cyan-500/10 border border-white/[0.125] bg-white/5 hover:bg-white/10 hover:border-cyan-600">
+        <div class="md:row-span-2 group relative rounded-lg p-6 transition-colors duration-200 bg-linear-to-br from-blue-500/10 to-cyan-500/10 border border-white/12.5 bg-white/5 hover:bg-white/10 hover:border-cyan-600">
           <div class="flex flex-col h-full justify-between gap-6">
             <div>
               <h3 class="text-xl font-semibold mb-4">Send Me a Message</h3>
@@ -27,7 +27,7 @@ import ContactForm from "./react/ContactForm";
         </div>
 
         <!-- Map Card -->
-        <div class="group relative rounded-lg transition-colors duration-200 bg-gradient-to-br from-purple-500/10 to-pink-500/10 border border-white/[0.125] bg-white/5 hover:bg-white/10 cursor-pointer hover:border-pink-600">
+        <div class="group relative rounded-lg transition-colors duration-200 bg-linear-to-br from-purple-500/10 to-pink-500/10 border border-white/12.5 bg-white/5 hover:bg-white/10 cursor-pointer hover:border-pink-600">
           <!-- <Map client:load
             center={[12.5683, 44.0574]}
             zoom={10}
@@ -39,7 +39,7 @@ import ContactForm from "./react/ContactForm";
         </div>
 
         <!-- Social Links Card -->
-        <div class="group relative rounded-lg p-6 transition-colors duration-200 bg-gradient-to-br from-green-500/10 to-emerald-500/10 border border-white/[0.125] bg-white/5 hover:bg-white/10 cursor-pointer hover:border-emerald-600">
+        <div class="group relative rounded-lg p-6 transition-colors duration-200 bg-linear-to-br from-green-500/10 to-emerald-500/10 border border-white/12.5 bg-white/5 hover:bg-white/10 cursor-pointer hover:border-emerald-600">
           <div class="flex flex-col h-full justify-between">
             <div>
               <h3 class="text-xl font-semibold mb-4">Social Links</h3>
@@ -47,12 +47,12 @@ import ContactForm from "./react/ContactForm";
             </div>
             <div class="grid grid-cols-2 gap-4">
               <a href="https://github.com/Stedamb" target="_blank" rel="noopener noreferrer" 
-                class="group/bento relative rounded-lg p-4 transition-colors duration-200 bg-gradient-to-br from-zinc-500/10 to-zinc-800/10 border border-white/[0.125] bg-white/5 hover:bg-white/10 hover:border-zinc-400 flex flex-col items-center justify-center gap-2">
+                class="group/bento relative rounded-lg p-4 transition-colors duration-200 bg-linear-to-br from-zinc-500/10 to-zinc-800/10 border border-white/12.5 bg-white/5 hover:bg-white/10 hover:border-zinc-400 flex flex-col items-center justify-center gap-2">
                 <Github className="h-8 w-8 transition-transform group-hover/bento:scale-110" />
                 <span class="font-medium">GitHub</span>
               </a>
               <a href="https://linkedin.com/in/ste-damb" target="_blank" rel="noopener noreferrer"
-                class="group/bento relative rounded-lg p-4 transition-colors duration-200 bg-gradient-to-br from-blue-500/10 to-cyan-500/10 border border-white/[0.125] bg-white/5 hover:bg-white/10 hover:border-cyan-600 flex flex-col items-center justify-center gap-2">
+                class="group/bento relative rounded-lg p-4 transition-colors duration-200 bg-linear-to-br from-blue-500/10 to-cyan-500/10 border border-white/12.5 bg-white/5 hover:bg-white/10 hover:border-cyan-600 flex flex-col items-center justify-center gap-2">
                 <Linkedin className="h-8 w-8 transition-transform group-hover/bento:scale-110" />
                 <span class="font-medium">LinkedIn</span>
               </a>

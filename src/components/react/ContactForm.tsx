@@ -122,7 +122,7 @@ export default function ContactForm() {
           />
         </div>
         
-        <div className="flex-grow mt-4 mb-4">
+        <div className="grow mt-4 mb-4">
           <FormField
             control={form.control}
             name="message"
@@ -145,7 +145,7 @@ export default function ContactForm() {
           type="submit" 
           size="lg" 
           variant="glass"
-          className="rounded-lg w-full flex-none transition-colors duration-200 bg-gradient-to-br from-blue-500/10 to-cyan-500/10 border border-white/20 hover:bg-white/20 hover:border-cyan-600 flex py-6 gap-2 items-center justify-center"
+          className="rounded-lg w-full flex-none transition-colors duration-200 bg-linear-to-br from-blue-500/10 to-cyan-500/10 border border-white/20 hover:bg-white/20 hover:border-cyan-600 flex py-6 gap-2 items-center justify-center"
           disabled={isSubmitting}
         >
           <Mail className="h-5 w-5" />

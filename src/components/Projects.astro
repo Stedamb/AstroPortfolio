@@ -2,13 +2,14 @@
 import { Github, ExternalLink } from 'lucide-react';
 import { buttonVariants } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
+import { Image } from 'astro:assets';
 
 const projects = [
   {
     title: 'AnimaNoire Tattoo Atelier',
     description: 'Website for a tattoo shop. Built with Astro and Sanity CMS.',
     image: '/animanoire.webp',
-    gradient: 'bg-gradient-to-br from-purple-500/10 to-pink-500/10',
+    gradient: 'bg-linear-to-br from-purple-500/10 to-pink-500/10',
     border: 'hover:border-pink-600',
     github: 'https://github.com/Stedamb/AnimaNoire/tree/astro-sanity',
     demo: 'http://animanoire.it',
@@ -17,7 +18,7 @@ const projects = [
     title: 'Next Blog',
     description: 'My personal blog built with Next.js and Sanity CMS.',
     image: '/blog.webp',
-    gradient: 'bg-gradient-to-br from-emerald-500/10 to-teal-500/10',
+    gradient: 'bg-linear-to-br from-emerald-500/10 to-teal-500/10',
     border: 'hover:border-teal-600',
     github: 'https://github.com/Stedamb/next-blog',
     demo: 'http://stedamb.vercel.app',
@@ -26,7 +27,7 @@ const projects = [
     title: 'Video Portfolio',
     description: 'A video portfolio showcasing my work and skills. Built with Astro.',
     image: '/video-journal.webp',
-    gradient: 'bg-gradient-to-br from-orange-500/10 to-yellow-500/10',
+    gradient: 'bg-linear-to-br from-orange-500/10 to-yellow-500/10',
     border: 'hover:border-yellow-600',
     github: 'https://github.com/Stedamb/Videomaker-portfolio/tree/dev',
     demo: 'http://video-journal.vercel.app',
@@ -36,39 +37,43 @@ const projects = [
 
 <section id="projects" class="relative overflow-hidden py-20">
   <!-- Background gradients -->
-  <div class="absolute inset-0 bg-background">
+  <div class="bg-background absolute inset-0">
     <div
       class="absolute inset-0 bg-[radial-gradient(at_47%_33%,hsl(0,0%,100%)_0,transparent_59%)] opacity-10"
     >
     </div>
   </div>
 
-  <div class="max-w-6xl relative mx-auto px-4">
-    <h2 class="mb-12 text-center text-3xl font-normal font-serif italic md:text-4xl">Featured Projects</h2>
+  <div class="relative mx-auto max-w-6xl px-4">
+    <h2 class="mb-12 text-center font-serif text-3xl font-normal italic md:text-4xl">
+      Featured Projects
+    </h2>
     <div class="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
       {
         projects.map((project) => (
           <div
-            class={`group relative overflow-hidden rounded-lg border border-white/[0.125] bg-white/5 p-2 transition-colors duration-200 hover:bg-white/10 ${project.gradient} ${project.border}`}
+            class={`group relative overflow-hidden rounded-lg border border-white/12.5 bg-white/5 p-2 transition-colors duration-200 hover:bg-white/10 ${project.gradient} ${project.border}`}
           >
             <div class="relative h-60 overflow-hidden rounded-lg">
-              <img
+              <Image
                 src={project.image}
                 alt={project.title}
+                width={380}
+                height={300}
                 class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
               />
             </div>
             <div class="relative space-y-4 p-6">
               <h3 class="text-xl font-bold">{project.title}</h3>
               <p class="text-muted-foreground">{project.description}</p>
-              <div class="flex flex-wrap gap-4 w-full mt-auto">
+              <div class="mt-auto flex w-full flex-wrap gap-4">
                 <a
                   href={project.github}
                   target="_blank"
                   rel="noopener noreferrer"
                   class={cn(
-                    buttonVariants({ variant: "glass" }),
-                    "flex items-center justify-center gap-2 flex-1",
+                    buttonVariants({ variant: 'glass' }),
+                    'flex flex-1 items-center justify-center gap-2',
                     project.border
                   )}
                 >
@@ -80,8 +85,8 @@ const projects = [
                   target="_blank"
                   rel="noopener noreferrer"
                   class={cn(
-                    buttonVariants({ variant: "glass" }),
-                    "flex items-center justify-center gap-2 flex-1",
+                    buttonVariants({ variant: 'glass' }),
+                    'flex flex-1 items-center justify-center gap-2',
                     project.border
                   )}
                 >
