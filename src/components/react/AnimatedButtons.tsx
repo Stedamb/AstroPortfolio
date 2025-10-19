@@ -33,35 +33,40 @@ export default function AnimatedButtons() {
       initial="hidden"
       animate="show"
     >
-      <motion.a 
-        href="https://github.com/Stedamb" 
-        target="_blank" 
-        rel="noopener noreferrer" 
+      <motion.a
+        href="https://github.com/Stedamb"
+        target="_blank"
+        rel="noopener noreferrer"
         variants={item}
-
+        aria-label="Visit my GitHub profile"
       >
         <Button variant="outline" size="icon" className="rounded-full bg-white/10 backdrop-blur-xs border-white/20 hover:bg-white/20">
           <Github size={8} />
+          <span className="sr-only">GitHub</span>
         </Button>
       </motion.a>
       
-      <motion.a 
-        href="https://linkedin.com/in/ste-damb" 
-        target="_blank" 
-        rel="noopener noreferrer" 
+      <motion.a
+        href="https://linkedin.com/in/ste-damb"
+        target="_blank"
+        rel="noopener noreferrer"
         variants={item}
+        aria-label="Visit my LinkedIn profile"
       >
         <Button variant="outline" size="icon" className=" rounded-full bg-white/10 backdrop-blur-xs border-white/20 hover:bg-white/20">
           <Linkedin size={8} />
+          <span className="sr-only">LinkedIn</span>
         </Button>
       </motion.a>
       
-      <motion.a 
-        href="mailto:stedamb@protonmail.com" 
+      <motion.a
+        href="mailto:stedamb@protonmail.com"
         variants={item}
+        aria-label="Send me an email"
       >
         <Button variant="outline" size="icon" className=" rounded-full bg-white/10 backdrop-blur-xs border-white/20 hover:bg-white/20">
           <Mail size={8} />
+          <span className="sr-only">Email</span>
         </Button>
       </motion.a>
 
