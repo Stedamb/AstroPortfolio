@@ -8,12 +8,19 @@ import '@/styles/globals.css';
 interface Props {
   title?: string;
   description?: string;
+  image?: string;
+  canonicalURL?: string;
 }
 
 const {
   title = "Stefano D'Ambrosio - Portfolio",
   description = "Portfolio website featuring projects, technologies, and contact information for Stefano D'Ambrosio.",
+  image = '/assets/og-image.png',
+  canonicalURL = new URL(Astro.url.pathname, Astro.site).href,
 } = Astro.props;
+
+// Get the canonical URL
+const canonical = canonicalURL || new URL(Astro.url.pathname, Astro.site).href;
 ---
 
 <!doctype html>
@@ -25,6 +32,53 @@ const {
     <meta name="generator" content={Astro.generator} />
 
     <title>{title}</title>
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href={canonical} />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={new URL(image, Astro.site)} />
+    <meta property="og:site_name" content="Stefano D'Ambrosio Portfolio" />
+    <meta property="og:locale" content="en_US" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content={canonical} />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={new URL(image, Astro.site)} />
+    <meta name="twitter:creator" content="@stedamb" />
+
+    <!-- Additional SEO -->
+    <meta name="author" content="Stefano D'Ambrosio" />
+    <meta
+      name="keywords"
+      content="Stefano D'Ambrosio, portfolio, web developer, full-stack developer, software engineer"
+    />
+    <meta name="robots" content="index, follow" />
+
+    <!-- Structured Data (JSON-LD) -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Stefano D'Ambrosio",
+        "url": "https://www.stedamb.it",
+        "image": "https://www.stedamb.it/assets/og-image.png",
+        "sameAs": ["https://github.com/Stedamb", "https://linkedin.com/in/ste-damb"],
+        "jobTitle": "Front End Developer",
+        "worksFor": {
+          "@type": "Organization",
+          "name": "Freelance"
+        },
+        "description": "Portfolio website featuring projects, technologies, and contact information for Stefano D'Ambrosio.",
+        "email": "stedamb@protonmail.com"
+      }
+    </script>
 
     <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon.png" />
     <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon.png" />

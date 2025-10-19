@@ -127,33 +127,5 @@
   body {
     @apply bg-background text-foreground text-base leading-relaxed;
   }
-
-  p {
-    @apply mb-4 text-base;
-  }
-
-  h1 {
-    @apply mb-4 text-4xl font-bold md:text-5xl;
-  }
-
-  h2 {
-    @apply mb-3 text-3xl font-semibold md:text-4xl;
-  }
-
-  h3 {
-    @apply mb-3 text-2xl font-semibold md:text-3xl;
-  }
-
-  h4 {
-    @apply mb-2 text-xl font-semibold md:text-2xl;
-  }
-
-  input,
-  textarea {
-    @apply text-base;
-  }
-
-  button {
-    @apply text-base;
-  }
 }
+
