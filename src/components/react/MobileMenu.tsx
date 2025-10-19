@@ -36,7 +36,7 @@ const MobileMenu = () => {
       opacity: 1,
       scale: 1,
       transition: {
-        type: "spring",
+        type: 'spring',
         stiffness: 300,
         damping: 30,
         staggerChildren: 0.1,
@@ -56,7 +56,7 @@ const MobileMenu = () => {
       y: 0,
       rotate: 0,
       transition: {
-        type: "spring",
+        type: 'spring',
         stiffness: 300,
         damping: 30,
       },
@@ -67,13 +67,13 @@ const MobileMenu = () => {
     <div className="lg:hidden">
       <motion.button
         onClick={toggleMenu}
-        className="p-4 text-foreground hover:text-muted-foreground focus:outline-hidden relative opacity-75 z-50"
+        className="text-foreground hover:text-muted-foreground relative z-50 p-4 opacity-75 focus:outline-hidden"
         aria-label="Toggle Menu"
         whileTap={{ scale: 0.95 }}
       >
         <motion.div
           animate={{ rotate: isOpen ? 90 : 0 }}
-          transition={{ type: "spring", stiffness: 300, damping: 30 }}
+          transition={{ type: 'spring', stiffness: 300, damping: 30 }}
         >
           {isOpen ? <X size={40} /> : <Menu size={40} />}
         </motion.div>
@@ -85,9 +85,9 @@ const MobileMenu = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 bg-black min-h-screen"
+            className="fixed inset-0 min-h-screen bg-black"
           >
-            <div className="flex flex-col items-center justify-center min-h-screen">
+            <div className="flex min-h-screen flex-col items-center justify-center">
               <motion.nav
                 initial="closed"
                 animate="open"
@@ -100,7 +100,7 @@ const MobileMenu = () => {
                     key={item.name}
                     href={item.href}
                     variants={itemVariants}
-                    className="text-2xl text-foreground hover:text-primary font-serif italic transition-colors relative group"
+                    className="text-foreground hover:text-primary group relative font-serif text-2xl italic transition-colors"
                     whileHover={{ scale: 1.1 }}
                     whileTap={{ scale: 0.95 }}
                     onClick={() => {
@@ -110,8 +110,8 @@ const MobileMenu = () => {
                   >
                     {item.name}
                     <motion.span
-                      className="absolute -bottom-2 left-0 w-0 h-0.5 bg-linear-to-r from-primary to-primary/50 group-hover:w-full transition-all duration-300"
-                      whileHover={{ width: "100%" }}
+                      className="from-primary to-primary/50 absolute -bottom-2 left-0 h-0.5 w-0 bg-linear-to-r transition-all duration-300 group-hover:w-full"
+                      whileHover={{ width: '100%' }}
                     />
                   </motion.a>
                 ))}

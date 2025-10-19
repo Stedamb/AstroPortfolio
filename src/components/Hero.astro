@@ -1,42 +1,41 @@
 ---
-import { ArrowDown } from "lucide-react";
-import AnimatedSocials from "@/components/react/AnimatedButtons";
-import AnimatedText from "@/components/react/AnimatedText";
+import { ArrowDown } from 'lucide-react';
+import AnimatedSocials from '@/components/react/AnimatedButtons';
+import AnimatedText from '@/components/react/AnimatedText';
 ---
 
 <div class="lazyload shaded relative h-svh">
-    <video autoplay loop muted class="h-full w-full object-cover">
-      <source src="/assets/waves.webm" type="video/mp4" />
-    </video>
-    <div class="darken absolute inset-0 bg-black/20"></div>
-    <div class="absolute inset-0 z-10 flex flex-col items-center justify-center p-8">
-      <div class="space-y-6 text-center">
-        <AnimatedText
-          text="Stefano"
-          className="text-4xl font-serif italic xl:text-5xl tracking-wide text-white/90"
-          client:load
-        />
-        <AnimatedText
-          text="D'Ambrosio"
-          delay={0.4}
-          className="text-4xl font-serif italic xl:text-5xl tracking-wide text-white/90"
-          client:load
-        />
-        <AnimatedText
-          text="Front End Developer"
-          delay={0}
-          className="text-lg font-light mt-2 tracking-wide text-gray-200 md:text-lg"
-          client:load
-        />
-        <AnimatedSocials client:load />
-        <div class="absolute bottom-8 left-1/2 -ml-[12px] animate-bounce text-white transition-colors hover:text-primary">
-          <a
-          href="#tech"  
-          aria-label="Scroll to About section"
-          >
+  <video autoplay loop muted class="h-full w-full object-cover">
+    <source src="/assets/waves.webm" type="video/mp4" />
+  </video>
+  <div class="darken absolute inset-0 bg-black/20"></div>
+  <div class="absolute inset-0 z-10 flex flex-col items-center justify-center p-8">
+    <div class="space-y-6 text-center">
+      <AnimatedText
+        text="Stefano"
+        className="font-serif text-4xl tracking-wide text-white/90 italic xl:text-5xl"
+        client:load
+      />
+      <AnimatedText
+        text="D'Ambrosio"
+        delay={0.4}
+        className="font-serif text-4xl tracking-wide text-white/90 italic xl:text-5xl"
+        client:load
+      />
+      <AnimatedText
+        text="Front End Developer"
+        delay={0}
+        className="mt-2 text-lg font-light tracking-wide text-gray-200 md:text-lg"
+        client:load
+      />
+      <AnimatedSocials client:load />
+      <div
+        class="hover:text-primary absolute bottom-8 left-1/2 -ml-[12px] animate-bounce text-white transition-colors"
+      >
+        <a href="#tech" aria-label="Scroll to About section">
           <ArrowDown size={24} />
         </a>
-        </div>
       </div>
     </div>
   </div>
+</div>

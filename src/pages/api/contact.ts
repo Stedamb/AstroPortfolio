@@ -1,5 +1,5 @@
-import type { APIRoute } from "astro";
-import nodemailer from "nodemailer";
+import type { APIRoute } from 'astro';
+import nodemailer from 'nodemailer';
 
 const transporter = nodemailer.createTransport({
   host: import.meta.env.EMAIL_HOST,
@@ -11,8 +11,8 @@ const transporter = nodemailer.createTransport({
   },
   tls: {
     // Do not fail on invalid certs
-    rejectUnauthorized: false
-  }
+    rejectUnauthorized: false,
+  },
 });
 
 export const POST: APIRoute = async ({ request }) => {
@@ -23,12 +23,12 @@ export const POST: APIRoute = async ({ request }) => {
     if (!name || !email || !subject || !message) {
       return new Response(
         JSON.stringify({
-          message: "All fields are required",
+          message: 'All fields are required',
         }),
         {
           status: 400,
           headers: {
-            "Content-Type": "application/json",
+            'Content-Type': 'application/json',
           },
         }
       );
@@ -64,20 +64,20 @@ export const POST: APIRoute = async ({ request }) => {
       {
         status: 200,
         headers: {
-          "Content-Type": "application/json",
+          'Content-Type': 'application/json',
         },
       }
     );
   } catch (error) {
-    console.error("Error processing contact form:", error);
+    console.error('Error processing contact form:', error);
     return new Response(
       JSON.stringify({
-        message: "There was an error processing your request.",
+        message: 'There was an error processing your request.',
       }),
       {
         status: 500,
         headers: {
-          "Content-Type": "application/json",
+          'Content-Type': 'application/json',
         },
       }
     );

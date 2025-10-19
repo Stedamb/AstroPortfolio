@@ -1,18 +1,16 @@
-import type { Route } from '@/env';
-
 export const routes = [
   {
     name: 'Tech',
-    href: '#tech'
+    href: '#tech',
   },
   {
     name: 'Projects',
-    href: '#projects'
+    href: '#projects',
   },
   {
     name: 'Contact',
-    href: '#contact'
-  }
+    href: '#contact',
+  },
 ];
 
 export default routes;

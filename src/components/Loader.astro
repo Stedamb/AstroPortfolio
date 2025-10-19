@@ -1,5 +1,5 @@
 <div
-  class="fixed inset-0 z-50 flex items-center justify-center bg-background transition-opacity duration-500"
+  class="bg-background fixed inset-0 z-50 flex items-center justify-center transition-opacity duration-500"
 >
   <img
     src="/logo.svg"
@@ -13,7 +13,7 @@
 <script>
   const hasSeenLoader = localStorage.getItem('isSeen') === 'true';
   const loader = document.querySelector('div.fixed.inset-0');
-  
+
   if (hasSeenLoader && loader) {
     loader.remove();
   } else {

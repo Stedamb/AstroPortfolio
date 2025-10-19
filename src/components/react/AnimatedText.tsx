@@ -1,4 +1,4 @@
-import { motion } from "framer-motion";
+import { motion } from 'framer-motion';
 
 interface Props {
   text: string;
@@ -6,9 +6,9 @@ interface Props {
   className?: string;
 }
 
-export default function AnimatedText({ text, delay = 0, className = "" }: Props) {
+export default function AnimatedText({ text, delay = 0, className = '' }: Props) {
   const letterVariants = {
-    hidden: { y: "100%" },
+    hidden: { y: '100%' },
     visible: (i: number) => ({
       y: 0,
       transition: {
@@ -31,7 +31,7 @@ export default function AnimatedText({ text, delay = 0, className = "" }: Props)
             animate="visible"
             custom={i}
           >
-            {char === " " ? "\u00A0" : char}
+            {char === ' ' ? '\u00A0' : char}
           </motion.span>
         ))}
       </div>
