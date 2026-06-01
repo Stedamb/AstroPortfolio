@@ -22,7 +22,6 @@ const {
 } = Astro.props;
 
 // Get the canonical URL
-const canonical = canonicalURL || new URL(Astro.url.pathname, Astro.site).href;
 ---
 
 <!doctype html>
@@ -36,11 +35,11 @@ const canonical = canonicalURL || new URL(Astro.url.pathname, Astro.site).href;
     <title>{title}</title>
 
     <!-- Canonical URL -->
-    <link rel="canonical" href={canonical} />
+    <link rel="canonical" href={canonicalURL} />
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
-    <meta property="og:url" content={canonical} />
+    <meta property="og:url" content={canonicalURL} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:image" content={new URL(image, Astro.site)} />
@@ -49,7 +48,7 @@ const canonical = canonicalURL || new URL(Astro.url.pathname, Astro.site).href;
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:url" content={canonical} />
+    <meta name="twitter:url" content={canonicalURL} />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={new URL(image, Astro.site)} />
@@ -66,7 +65,7 @@ const canonical = canonicalURL || new URL(Astro.url.pathname, Astro.site).href;
     <meta name="google-site-verification" content="O1CJVpBGxZrGOeVbeQ-spnPWxLJPx7lZ0-19ekTldi0" />
 
     <!-- Structured Data (JSON-LD) -->
-    <script type="application/ld+json">
+    <script type="application/ld+json" is:inline>
       {
         "@context": "https://schema.org",
         "@type": "Person",
@@ -99,6 +98,6 @@ const canonical = canonicalURL || new URL(Astro.url.pathname, Astro.site).href;
       <slot />
     </main>
     <Footer />
-    <Toaster client:load />
+    <Toaster client:visible />
   </body>
 </html>

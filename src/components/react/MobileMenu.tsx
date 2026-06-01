@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
-import routes from '../../routes/routes';
+import routes from '../../data/routes';
 
 const MobileMenu = () => {
   const [isOpen, setIsOpen] = useState(false);

@@ -71,19 +71,7 @@ const hasConsent = cookieConsent === 'accepted' || cookieConsent === 'rejected';
 
 {
   cookieConsent === 'accepted' && (
-    <script is:inline>
-      (function () {
-        if (window._gtmLoaded) return;
-        window._gtmLoaded = true;
-        window.dataLayer = window.dataLayer || [];
-        dataLayer.push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
-        var f = document.getElementsByTagName('script')[0],
-          j = document.createElement('script');
-        j.async = true;
-        j.src = 'https://www.googletagmanager.com/gtm.js?id=' + 'GTM-MGMXZ5ZC';
-        f.parentNode.insertBefore(j, f);
-      })();
-    </script>
+    <script is:inline>window.__loadGTM();</script>
   )
 }
 
@@ -102,11 +90,6 @@ const hasConsent = cookieConsent === 'accepted' || cookieConsent === 'rejected';
             '; path=/; max-age=' +
             60 * 60 * 24 * 365 +
             '; SameSite=Lax';
-        }
-
-        function getCookie() {
-          var match = document.cookie.match(new RegExp('(^| )' + key + '=([^;]+)'));
-          return match ? match[2] : null;
         }
 
         function hideBanner(callback) {
@@ -139,35 +122,25 @@ const hasConsent = cookieConsent === 'accepted' || cookieConsent === 'rejected';
           hideBanner();
         }
 
-        function dismiss() {
-          hideBanner();
-        }
-
         window.__cookieAccept = accept;
         window.__cookieReject = reject;
-        window.__cookieDismiss = dismiss;
 
-        var existing = getCookie();
-        if (existing === 'accepted') {
-          window.__loadGTM();
-        } else if (existing === 'rejected') {
-          /* nothing — banner stays hidden */
-        } else {
-          setTimeout(showBanner, 1000);
-        }
+        setTimeout(showBanner, 1000);
       })();
-
-      window.__loadGTM = function () {
-        if (window._gtmLoaded) return;
-        window._gtmLoaded = true;
-        window.dataLayer = window.dataLayer || [];
-        dataLayer.push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
-        var f = document.getElementsByTagName('script')[0],
-          j = document.createElement('script');
-        j.async = true;
-        j.src = 'https://www.googletagmanager.com/gtm.js?id=' + 'GTM-MGMXZ5ZC';
-        f.parentNode.insertBefore(j, f);
-      };
     </script>
   )
 }
+
+<script is:inline>
+  window.__loadGTM = function () {
+    if (window._gtmLoaded) return;
+    window._gtmLoaded = true;
+    window.dataLayer = window.dataLayer || [];
+    dataLayer.push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
+    var f = document.getElementsByTagName('script')[0],
+      j = document.createElement('script');
+    j.async = true;
+    j.src = 'https://www.googletagmanager.com/gtm.js?id=' + 'GTM-MGMXZ5ZC';
+    f.parentNode.insertBefore(j, f);
+  };
+</script>

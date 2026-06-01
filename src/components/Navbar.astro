@@ -1,7 +1,7 @@
 ---
 import { Button } from '@/components/ui/button';
 import MobileMenu from '@/components/react/MobileMenu';
-import { routes } from '@/routes/routes';
+import { routes } from '@/data/routes';
 
 const isHome = Astro.url.pathname === '/';
 const navRoutes = isHome ? routes.filter((r) => r.href !== '/') : routes;

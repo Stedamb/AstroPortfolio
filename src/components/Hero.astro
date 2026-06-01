@@ -1,12 +1,12 @@
 ---
 import { ArrowDown } from 'lucide-react';
-import AnimatedSocials from '@/components/react/AnimatedButtons';
+import AnimatedButtons from '@/components/react/AnimatedButtons';
 import AnimatedText from '@/components/react/AnimatedText';
 ---
 
 <div class="lazyload shaded relative h-svh">
   <video autoplay loop muted class="h-full w-full object-cover">
-    <source src="/assets/waves.webm" type="video/mp4" />
+    <source src="/assets/waves.webm" type="video/webm" />
   </video>
   <div class="darken absolute inset-0 bg-black/20"></div>
   <div class="absolute inset-0 z-10 flex flex-col items-center justify-center p-8">
@@ -32,7 +32,7 @@ import AnimatedText from '@/components/react/AnimatedText';
           client:load
         />
       </h2>
-      <AnimatedSocials client:load />
+      <AnimatedButtons client:load />
       <div
         class="hover:text-primary absolute bottom-8 left-1/2 -ml-[12px] animate-bounce text-white transition-colors"
       >
