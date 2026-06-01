@@ -1,19 +1,8 @@
 import type { APIRoute } from 'astro';
-import nodemailer from 'nodemailer';
+import { Resend } from 'resend';
 
-const transporter = nodemailer.createTransport({
-  host: import.meta.env.EMAIL_HOST,
-  port: Number(import.meta.env.EMAIL_PORT),
-  secure: true, // Use SSL
-  auth: {
-    user: import.meta.env.EMAIL_USER,
-    pass: import.meta.env.EMAIL_PASSWORD,
-  },
-  tls: {
-    // Do not fail on invalid certs
-    rejectUnauthorized: false,
-  },
-});
+const CONTACT_EMAIL = import.meta.env.CONTACT_EMAIL || 'stedamb@gmail.com';
+const resend = new Resend(import.meta.env.RESEND_API_KEY);
 
 export const POST: APIRoute = async ({ request }) => {
   try {
@@ -22,25 +11,19 @@ export const POST: APIRoute = async ({ request }) => {
 
     if (!name || !email || !subject || !message) {
       return new Response(
-        JSON.stringify({
-          message: 'All fields are required',
-        }),
+        JSON.stringify({ message: 'All fields are required' }),
         {
           status: 400,
-          headers: {
-            'Content-Type': 'application/json',
-          },
+          headers: { 'Content-Type': 'application/json' },
         }
       );
     }
 
-    // Send email
-    await transporter.sendMail({
-      from: `"Portfolio Contact" <${import.meta.env.EMAIL_USER}>`,
-      to: import.meta.env.EMAIL_TO,
+    const { error } = await resend.emails.send({
+      from: 'onboarding@resend.dev',
+      to: CONTACT_EMAIL,
       replyTo: email,
       subject: `Portfolio Contact: ${subject}`,
-      text: `Name: ${name}\nEmail: ${email}\nMessage: ${message}`,
       html: `
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
           <h2 style="color: #333;">New Contact Form Submission</h2>
@@ -57,28 +40,32 @@ export const POST: APIRoute = async ({ request }) => {
       `,
     });
 
+    if (error) {
+      return new Response(
+        JSON.stringify({ message: 'Failed to send message.' }),
+        {
+          status: 500,
+          headers: { 'Content-Type': 'application/json' },
+        }
+      );
+    }
+
     return new Response(
       JSON.stringify({
         message: "Thank you for your message! I'll get back to you soon.",
       }),
       {
         status: 200,
-        headers: {
-          'Content-Type': 'application/json',
-        },
+        headers: { 'Content-Type': 'application/json' },
       }
     );
-  } catch (error) {
-    console.error('Error processing contact form:', error);
+  } catch (err) {
+    console.error('Error processing contact form:', err);
     return new Response(
-      JSON.stringify({
-        message: 'There was an error processing your request.',
-      }),
+      JSON.stringify({ message: 'There was an error processing your request.' }),
       {
         status: 500,
-        headers: {
-          'Content-Type': 'application/json',
-        },
+        headers: { 'Content-Type': 'application/json' },
       }
     );
   }
