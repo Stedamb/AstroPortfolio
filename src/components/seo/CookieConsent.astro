@@ -1,0 +1,173 @@
+---
+const cookieConsent = Astro.cookies.get('cookie-consent')?.value;
+const hasConsent = cookieConsent === 'accepted' || cookieConsent === 'rejected';
+---
+
+<style is:global>
+  @keyframes cookie-slide-up {
+    from {
+      transform: translateY(100%);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+  @keyframes cookie-slide-down {
+    from {
+      transform: translateY(0);
+      opacity: 1;
+    }
+    to {
+      transform: translateY(100%);
+      opacity: 0;
+    }
+  }
+  .cookie-enter {
+    animation: cookie-slide-up 0.4s ease-out;
+  }
+  .cookie-exit {
+    animation: cookie-slide-down 0.4s ease-in forwards;
+  }
+</style>
+
+{
+  !hasConsent && (
+    <div
+      id="cookie-consent-banner"
+      class="fixed bottom-0 left-0 right-0 z-50 hidden border-t border-white/12.5 bg-white/5 backdrop-blur-lg"
+    >
+      <div class="mx-auto flex max-w-7xl flex-col items-start gap-4 px-6 py-5 sm:flex-row sm:items-center sm:justify-between">
+        <div class="flex-1">
+          <p class="text-sm text-foreground/80">
+            This site uses cookies to improve your experience.
+            <a
+              href="/cookie-policy"
+              class="text-muted-foreground underline-offset-4 hover:text-foreground hover:underline"
+            >
+              Learn more
+            </a>
+          </p>
+        </div>
+        <div class="flex shrink-0 items-center gap-3">
+          <button
+            onclick="window.__cookieReject()"
+            class="cursor-pointer rounded-lg border border-white/12.5 bg-white/5 px-4 py-2 text-sm text-foreground/70 transition-colors hover:bg-white/10 hover:text-foreground"
+          >
+            Reject All
+          </button>
+          <button
+            onclick="window.__cookieAccept()"
+            class="cursor-pointer rounded-lg border border-white/12.5 bg-linear-to-br from-blue-500/10 to-cyan-500/10 px-4 py-2 text-sm font-semibold text-foreground/90 shadow-xs transition-colors hover:bg-white/10 hover:text-foreground"
+          >
+            Accept All
+          </button>
+        </div>
+      </div>
+    </div>
+  )
+}
+
+{
+  cookieConsent === 'accepted' && (
+    <script is:inline>
+      (function () {
+        if (window._gtmLoaded) return;
+        window._gtmLoaded = true;
+        window.dataLayer = window.dataLayer || [];
+        dataLayer.push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
+        var f = document.getElementsByTagName('script')[0],
+          j = document.createElement('script');
+        j.async = true;
+        j.src = 'https://www.googletagmanager.com/gtm.js?id=' + 'GTM-MGMXZ5ZC';
+        f.parentNode.insertBefore(j, f);
+      })();
+    </script>
+  )
+}
+
+{
+  !hasConsent && (
+    <script is:inline>
+      (function () {
+        var key = 'cookie-consent';
+        var el = document.getElementById('cookie-consent-banner');
+
+        function setCookie(value) {
+          document.cookie =
+            key +
+            '=' +
+            value +
+            '; path=/; max-age=' +
+            60 * 60 * 24 * 365 +
+            '; SameSite=Lax';
+        }
+
+        function getCookie() {
+          var match = document.cookie.match(new RegExp('(^| )' + key + '=([^;]+)'));
+          return match ? match[2] : null;
+        }
+
+        function hideBanner(callback) {
+          if (!el) return void (callback && callback());
+          el.classList.add('cookie-exit');
+          el.addEventListener(
+            'animationend',
+            function () {
+              el.classList.add('hidden');
+              el.classList.remove('cookie-exit');
+              if (callback) callback();
+            },
+            { once: true },
+          );
+        }
+
+        function showBanner() {
+          if (!el) return;
+          el.classList.remove('hidden');
+          el.classList.add('cookie-enter');
+        }
+
+        function accept() {
+          setCookie('accepted');
+          hideBanner(window.__loadGTM);
+        }
+
+        function reject() {
+          setCookie('rejected');
+          hideBanner();
+        }
+
+        function dismiss() {
+          hideBanner();
+        }
+
+        window.__cookieAccept = accept;
+        window.__cookieReject = reject;
+        window.__cookieDismiss = dismiss;
+
+        var existing = getCookie();
+        if (existing === 'accepted') {
+          window.__loadGTM();
+        } else if (existing === 'rejected') {
+          /* nothing — banner stays hidden */
+        } else {
+          setTimeout(showBanner, 1000);
+        }
+      })();
+
+      window.__loadGTM = function () {
+        if (window._gtmLoaded) return;
+        window._gtmLoaded = true;
+        window.dataLayer = window.dataLayer || [];
+        dataLayer.push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
+        var f = document.getElementsByTagName('script')[0],
+          j = document.createElement('script');
+        j.async = true;
+        j.src = 'https://www.googletagmanager.com/gtm.js?id=' + 'GTM-MGMXZ5ZC';
+        f.parentNode.insertBefore(j, f);
+      };
+    </script>
+  )
+}

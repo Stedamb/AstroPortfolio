@@ -2,6 +2,7 @@
 import Navbar from '@/components/Navbar.astro';
 import Footer from '@/components/Footer.astro';
 import GTM from '@/components/seo/GTM.astro';
+import CookieConsent from '@/components/seo/CookieConsent.astro';
 import { ClientRouter } from 'astro:transitions';
 import { Toaster } from '@/components/ui/toaster';
 import '@/styles/globals.css';
@@ -87,10 +88,10 @@ const canonical = canonicalURL || new URL(Astro.url.pathname, Astro.site).href;
     <meta name="theme-color" content="#000000" />
 
     <ClientRouter />
-    <GTM type="head" />
   </head>
   <body>
-    <GTM type="body" />
+    <GTM />
+    <CookieConsent />
     <Navbar />
     <main>
       <slot />

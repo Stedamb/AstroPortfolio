@@ -5,6 +5,8 @@ import routes from '../../routes/routes';
 
 const MobileMenu = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const isHome = typeof window !== 'undefined' && window.location.pathname === '/';
+  const navRoutes = isHome ? routes.filter((r) => r.href !== '/') : routes;
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
@@ -95,10 +97,10 @@ const MobileMenu = () => {
                 variants={menuVariants}
                 className="flex flex-col items-center gap-12 py-8"
               >
-                {routes.map((item) => (
+                {navRoutes.map((item) => (
                   <motion.a
                     key={item.name}
-                    href={item.href}
+                    href={isHome || item.href.startsWith('/') ? item.href : '/' + item.href}
                     variants={itemVariants}
                     className="text-foreground hover:text-primary group relative font-serif text-2xl italic transition-colors"
                     whileHover={{ scale: 1.1 }}

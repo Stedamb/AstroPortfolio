@@ -1,7 +1,8 @@
 <div class="border-t border-white/12.5">
   <div class="relative mx-auto max-w-6xl px-4">
-    <div class="flex flex-col items-center justify-between gap-4 py-8 md:flex-row">
-      <span class="text-muted-foreground text-sm opacity-90">
+    <div class="flex flex-col items-center justify-between gap-4 py-4 md:flex-row">
+
+      <span class="text-muted-foreground text-xs opacity-90">
         Made with
         <span role="img" aria-label="heart">❤️</span>
         by
@@ -14,9 +15,19 @@
           Stefano D'Ambrosio
         </a>
       </span>
-      <span class="text-muted-foreground text-xs opacity-80 md:text-sm">
-        Copyright &copy; {new Date().getFullYear()} All rights reserved
-      </span>
+            <div class="flex items-center gap-2 text-xs text-muted-foreground">
+        <a href="/privacy-policy" class="underline-offset-4 hover:text-foreground hover:underline">
+          Privacy Policy
+        </a>
+        <span class="opacity-30">|</span>
+        <a href="/cookie-policy" class="underline-offset-4 hover:text-foreground hover:underline">
+          Cookie Policy
+        </a>
+        <span class="opacity-30">|</span>
+        <span class="text-muted-foreground text-xs">
+          Copyright &copy; {new Date().getFullYear()} All rights reserved
+        </span>
+      </div>
     </div>
   </div>
 </div>

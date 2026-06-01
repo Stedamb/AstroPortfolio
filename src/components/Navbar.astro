@@ -2,6 +2,9 @@
 import { Button } from '@/components/ui/button';
 import MobileMenu from '@/components/react/MobileMenu';
 import { routes } from '@/routes/routes';
+
+const isHome = Astro.url.pathname === '/';
+const navRoutes = isHome ? routes.filter((r) => r.href !== '/') : routes;
 ---
 
 <div id="navbar" class="absolute top-0 left-0 z-50 w-full transform transition-all duration-300">
@@ -11,9 +14,9 @@ import { routes } from '@/routes/routes';
   {/* Desktop Menu */}
   <div class="hidden justify-center gap-4 p-6 lg:flex">
     {
-      routes.map((route) => (
+      navRoutes.map((route) => (
         <Button variant="link" size="sm" asChild>
-          <a class="text-foreground px-2 text-2xl opacity-90" href={route.href}>
+          <a class="text-foreground px-2 text-2xl opacity-90" href={isHome || route.href.startsWith('/') ? route.href : '/' + route.href}>
             {route.name}
           </a>
         </Button>
