@@ -13,16 +13,16 @@ import { useToast } from '@/hooks/use-toast';
 
 const formSchema = z.object({
   name: z.string().min(2, {
-    message: 'Name must be at least 2 characters.',
+    error: 'Name must be at least 2 characters.',
   }),
-  email: z.string().email({
-    message: 'Please enter a valid email address.',
+  email: z.email({
+    error: 'Please enter a valid email address.',
   }),
   subject: z.string().min(2, {
-    message: 'Subject must be at least 2 characters.',
+    error: 'Subject must be at least 2 characters.',
   }),
   message: z.string().min(10, {
-    message: 'Message must be at least 10 characters.',
+    error: 'Message must be at least 10 characters.',
   }),
 });
 
