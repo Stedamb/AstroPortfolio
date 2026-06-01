@@ -10,6 +10,8 @@ import { Textarea } from '@/components/ui/textarea';
 import { Mail } from 'lucide-react';
 import { useState } from 'react';
 import { useToast } from '@/hooks/use-toast';
+import { Checkbox } from '@/components/ui/checkbox';
+import { Label } from '@/components/ui/label';
 
 const formSchema = z.object({
   name: z.string().min(2, {
@@ -28,6 +30,7 @@ const formSchema = z.object({
 
 export default function ContactForm() {
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [privacyConsent, setPrivacyConsent] = useState(false);
   const { toast } = useToast();
 
   const form = useForm<z.infer<typeof formSchema>>({
@@ -41,6 +44,15 @@ export default function ContactForm() {
   });
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
+    if (!privacyConsent) {
+      toast({
+        variant: 'destructive',
+        title: 'Consent Required',
+        description: 'Please accept the privacy policy to send a message.',
+      });
+      return;
+    }
+
     try {
       setIsSubmitting(true);
       const response = await fetch('/api/contact', {
@@ -134,6 +146,27 @@ export default function ContactForm() {
               </FormItem>
             )}
           />
+        </div>
+
+        <div className="mb-4 flex items-center gap-2">
+          <Checkbox
+            id="privacy"
+            checked={privacyConsent}
+            onCheckedChange={(checked) => setPrivacyConsent(checked === true)}
+          />
+          <Label
+            htmlFor="privacy"
+            className="text-muted-foreground cursor-pointer text-xs leading-relaxed"
+          >
+            I have read and accept the{' '}
+            <a
+              href="/privacy-policy"
+              target="_blank"
+              className="text-foreground underline-offset-4 hover:underline"
+            >
+              Privacy Policy
+            </a>
+          </Label>
         </div>
 
         <Button
