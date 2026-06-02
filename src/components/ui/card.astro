@@ -1,0 +1,22 @@
+---
+import { cn } from '@/lib/utils';
+
+const color = Astro.props.color || 'blue';
+const className = Astro.props.class || '';
+
+const colorClasses: Record<string, string> = {
+  pink: 'bg-linear-to-br from-purple-500/10 to-pink-500/10 hover:border-pink-600',
+  green: 'bg-linear-to-br from-emerald-500/10 to-teal-500/10 hover:border-teal-600',
+  blue: 'bg-linear-to-br from-blue-500/10 to-cyan-500/10 hover:border-cyan-600',
+};
+---
+
+<div
+  class={cn(
+    'group relative rounded-lg border border-white/12.5 bg-white/5 transition-colors duration-200 hover:bg-white/10',
+    colorClasses[color],
+    className,
+  )}
+>
+  <slot />
+</div>

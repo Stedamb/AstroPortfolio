@@ -43,7 +43,6 @@ export default function AnimatedButtons() {
         <Button
           variant="outline"
           size="icon"
-          className="rounded-full border-white/20 bg-white/10 backdrop-blur-xs hover:bg-white/20"
         >
           <Github size={8} />
           <span className="sr-only">GitHub</span>
@@ -60,7 +59,6 @@ export default function AnimatedButtons() {
         <Button
           variant="outline"
           size="icon"
-          className="rounded-full border-white/20 bg-white/10 backdrop-blur-xs hover:bg-white/20"
         >
           <Linkedin size={8} />
           <span className="sr-only">LinkedIn</span>
@@ -71,7 +69,6 @@ export default function AnimatedButtons() {
         <Button
           variant="outline"
           size="icon"
-          className="rounded-full border-white/20 bg-white/10 backdrop-blur-xs hover:bg-white/20"
         >
           <Mail size={8} />
           <span className="sr-only">Email</span>
@@ -88,7 +85,7 @@ export default function AnimatedButtons() {
         <Button
           variant="outline"
           size="fluid"
-          className="group-hover h-9 rounded-full border-white/20 bg-white/10 backdrop-blur-xs hover:bg-white/20"
+          className="group-hover h-9"
         >
           <span>CV</span>
           <CircleArrowDown size={8} />

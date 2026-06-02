@@ -1,6 +1,7 @@
 ---
 import { Github, Linkedin } from 'lucide-react';
-import ContactForm from './react/ContactForm';
+import Card from '@/components/ui/card.astro';
+import ContactForm from '../react/ContactForm';
 ---
 
 <section id="contact" class="relative overflow-hidden py-20">
@@ -21,9 +22,7 @@ import ContactForm from './react/ContactForm';
         class="grid w-full grid-cols-1 gap-2 rounded-xl border border-white/12.5 bg-black/20 p-2 md:grid-cols-2 lg:gap-4 lg:p-4"
       >
         <!-- Contact Form Card -->
-        <div
-          class="group relative rounded-lg border border-white/12.5 bg-white/5 bg-linear-to-br from-blue-500/10 to-cyan-500/10 p-6 transition-colors duration-200 hover:border-cyan-600 hover:bg-white/10 md:row-span-2"
-        >
+        <Card color="blue" class="p-6 md:row-span-2">
           <div class="flex h-full flex-col justify-between gap-6">
             <div>
               <h3 class="mb-4 text-xl font-semibold">Send Me a Message</h3>
@@ -33,23 +32,19 @@ import ContactForm from './react/ContactForm';
             </div>
             <ContactForm client:load />
           </div>
-        </div>
+        </Card>
 
         <!-- Map Card -->
-        <div
-          class="group relative cursor-pointer rounded-lg border border-white/12.5 bg-white/5 bg-linear-to-br from-purple-500/10 to-pink-500/10 transition-colors duration-200 hover:border-pink-600 hover:bg-white/10"
-        >
+        <Card color="pink" class="cursor-pointer">
           <img
             src="/sprites/map.svg"
             alt="Map"
             class="h-full w-full object-cover mix-blend-color-dodge"
           />
-        </div>
+        </Card>
 
         <!-- Social Links Card -->
-        <div
-          class="group relative cursor-pointer rounded-lg border border-white/12.5 bg-white/5 bg-linear-to-br from-green-500/10 to-emerald-500/10 p-6 transition-colors duration-200 hover:border-emerald-600 hover:bg-white/10"
-        >
+        <Card color="green" class="p-6">
           <div class="flex h-full flex-col justify-between">
             <div>
               <h3 class="mb-4 text-xl font-semibold">Social Links</h3>
@@ -76,7 +71,7 @@ import ContactForm from './react/ContactForm';
               </a>
             </div>
           </div>
-        </div>
+        </Card>
       </div>
     </div>
   </div>
