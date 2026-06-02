@@ -4,7 +4,7 @@ import MobileMenu from '@/components/react/MobileMenu';
 import { routes } from '@/data/routes';
 
 const isHome = Astro.url.pathname === '/';
-const navRoutes = isHome ? routes.filter((r) => r.href !== '/') : routes;
+const navRoutes = isHome ? routes : [{ name: 'Home', href: '/' }];
 ---
 
 <div id="navbar" class="absolute top-0 left-0 z-50 w-full transform transition-all duration-300">
@@ -20,6 +20,7 @@ const navRoutes = isHome ? routes.filter((r) => r.href !== '/') : routes;
           size="sm"
           class="px-2 text-2xl opacity-90"
           href={isHome || route.href.startsWith('/') ? route.href : '/' + route.href}
+          data-scroll-to
         >
           {route.name}
         </Button>
@@ -30,10 +31,14 @@ const navRoutes = isHome ? routes.filter((r) => r.href !== '/') : routes;
 
 <script>
   const navbar = document.getElementById('navbar');
-  let lastScroll = window.scrollY;
+  const getScrollY = () => {
+    const m = document.documentElement.style.transform.match(/translate3d\(0px,\s*(-?\d+)/);
+    return m ? Math.abs(parseInt(m[1])) : window.scrollY;
+  };
+  let lastScroll = getScrollY();
 
   const handleScroll = () => {
-    const currentScroll = window.scrollY;
+    const currentScroll = getScrollY();
 
     if (currentScroll > window.innerHeight * 0.8) {
       // After 80%, show navbar with animation

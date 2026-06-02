@@ -1,9 +1,5 @@
 export const routes = [
   {
-    name: 'Home',
-    href: '/',
-  },
-  {
     name: 'Tech',
     href: '#tech',
   },
