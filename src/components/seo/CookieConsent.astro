@@ -3,6 +3,26 @@ const cookieConsent = Astro.cookies.get('cookie-consent')?.value;
 const hasConsent = cookieConsent === 'accepted' || cookieConsent === 'rejected';
 ---
 
+<script is:inline>
+  window.__loadGTM = function () {
+    if (window._gtmLoaded) return;
+    window._gtmLoaded = true;
+    window.dataLayer = window.dataLayer || [];
+    dataLayer.push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
+    var f = document.getElementsByTagName('script')[0],
+      j = document.createElement('script');
+    j.async = true;
+    j.src = 'https://www.googletagmanager.com/gtm.js?id=' + 'GTM-MGMXZ5ZC';
+    f.parentNode.insertBefore(j, f);
+  };
+</script>
+
+{
+  cookieConsent === 'accepted' && (
+    <script is:inline>window.__loadGTM();</script>
+  )
+}
+
 <style is:global>
   @keyframes cookie-slide-up {
     from {
@@ -71,12 +91,6 @@ const hasConsent = cookieConsent === 'accepted' || cookieConsent === 'rejected';
 }
 
 {
-  cookieConsent === 'accepted' && (
-    <script is:inline>window.__loadGTM();</script>
-  )
-}
-
-{
   !hasConsent && (
     <script is:inline>
       (function () {
@@ -131,17 +145,3 @@ const hasConsent = cookieConsent === 'accepted' || cookieConsent === 'rejected';
     </script>
   )
 }
-
-<script is:inline>
-  window.__loadGTM = function () {
-    if (window._gtmLoaded) return;
-    window._gtmLoaded = true;
-    window.dataLayer = window.dataLayer || [];
-    dataLayer.push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
-    var f = document.getElementsByTagName('script')[0],
-      j = document.createElement('script');
-    j.async = true;
-    j.src = 'https://www.googletagmanager.com/gtm.js?id=' + 'GTM-MGMXZ5ZC';
-    f.parentNode.insertBefore(j, f);
-  };
-</script>
