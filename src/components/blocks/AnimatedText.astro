@@ -6,8 +6,8 @@ const chars = Array.from(text);
 <div class="overflow-hidden">
   <div class={className} data-animated-text data-base-delay={delay}>
     {
-      chars.map((char) => (
-        <span>
+      chars.map((char, i) => (
+        <span style={`--delay: ${delay + i * 0.08}s`}>
           {char === ' ' ? '\u00A0' : char}
         </span>
       ))
@@ -16,31 +16,30 @@ const chars = Array.from(text);
 </div>
 
 <style>
+  @keyframes clipReveal {
+    from {
+      clip-path: polygon(0 0, 0 0, 0 100%, 0 100%);
+    }
+    to {
+      clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+    }
+  }
+
   span {
     display: inline-block;
     clip-path: polygon(0 0, 0 0, 0 100%, 0 100%);
-    transition: clip-path 1s cubic-bezier(0.77, 0, 0.175, 1);
     will-change: clip-path;
   }
 
-  span.revealed {
-    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+  [data-animated] span {
+    animation: clipReveal 1s cubic-bezier(0.77, 0, 0.175, 1) var(--delay) both;
   }
 </style>
 
 <script>
   document.addEventListener('astro:page-load', () => {
-    const containers = document.querySelectorAll('[data-animated-text]');
-    containers.forEach((container) => {
-      const el = container as HTMLElement;
-      const baseDelay = parseFloat(el.dataset.baseDelay || '0');
-      const chars = container.querySelectorAll('span');
-      chars.forEach((char, i) => {
-        const ms = (baseDelay + i * 0.08) * 1000;
-        setTimeout(() => {
-          char.classList.add('revealed');
-        }, ms);
-      });
+    document.querySelectorAll<HTMLElement>('[data-animated-text]').forEach((el) => {
+      el.dataset.animated = '';
     });
   });
 </script>

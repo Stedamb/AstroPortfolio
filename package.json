@@ -27,7 +27,6 @@
     "clsx": "^2.1.1",
     "embla-carousel-react": "^8.6.0",
     "lucide-react": "^0.468.0",
-    "motion": "^11.18.2",
     "react": "18.3.1",
     "react-dom": "18.3.1",
     "react-hook-form": "^7.77.0",

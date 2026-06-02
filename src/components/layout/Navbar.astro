@@ -1,6 +1,6 @@
 ---
 import Button from '@/components/ui/button.astro';
-import MobileMenu from '@/components/react/MobileMenu';
+import MobileMenu from '../react/MobileMenu.astro';
 import { routes } from '@/data/routes';
 
 const isHome = Astro.url.pathname === '/';
@@ -9,7 +9,7 @@ const navRoutes = isHome ? routes : [{ name: 'Home', href: '/' }];
 
 <div id="navbar" class="absolute top-0 left-0 z-50 w-full transform transition-all duration-300">
   {/* Mobile Menu */}
-  <MobileMenu client:idle />
+  <MobileMenu />
 
   {/* Desktop Menu */}
   <div class="hidden justify-center gap-4 p-6 lg:flex">
