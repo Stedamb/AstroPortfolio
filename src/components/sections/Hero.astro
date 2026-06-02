@@ -5,8 +5,14 @@ import AnimatedText from '@/components/blocks/AnimatedText.astro';
 ---
 
 <div class="lazyload shaded relative h-svh">
-  <div class="absolute inset-0 overflow-hidden hero-video-wrapper">
-    <video autoplay loop muted poster="/assets/video_poster.webp" class="h-full w-full object-cover hero-video" data-hq-src="/assets/waves_original.webm">
+  <div class="hero-video-wrapper absolute inset-0 overflow-hidden">
+    <video
+      autoplay
+      loop
+      muted
+      poster="/assets/video_poster.avif"
+      class="hero-video h-full w-full object-cover"
+    >
       <source src="/assets/waves.webm" type="video/webm" />
     </video>
     <div class="darken absolute inset-0 bg-black/20"></div>
@@ -71,20 +77,4 @@ import AnimatedText from '@/components/blocks/AnimatedText.astro';
       }
     });
   });
-
-  const upgradeVideo = () => {
-    const v = document.querySelector<HTMLVideoElement>('.hero-video');
-    const hq = v?.dataset.hqSrc;
-    if (v && hq && v.currentSrc && !v.currentSrc.endsWith('/waves_original.webm')) {
-      const wasPaused = v.paused;
-      v.src = hq;
-      if (!wasPaused) v.play();
-    }
-  };
-
-  if ('requestIdleCallback' in window) {
-    requestIdleCallback(upgradeVideo, { timeout: 3000 });
-  } else {
-    setTimeout(upgradeVideo, 2000);
-  }
 </script>

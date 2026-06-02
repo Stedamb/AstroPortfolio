@@ -10,7 +10,7 @@ import tailwindcss from '@tailwindcss/vite';
 export default defineConfig({
   site: 'https://www.stedamb.it',
   output: 'server',
-  adapter: vercel(),
+  adapter: vercel({ imageService: true }),
 
   integrations: [react(), sitemap()],
 
