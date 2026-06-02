@@ -5,8 +5,8 @@ import AnimatedText from '@/components/blocks/AnimatedText.astro';
 ---
 
 <div class="lazyload shaded relative h-svh">
-  <div class="absolute inset-0 overflow-hidden" data-scroll data-scroll-speed="-0.3">
-    <video autoplay loop muted class="h-full w-full object-cover">
+  <div class="absolute inset-0 overflow-hidden hero-video-wrapper">
+    <video autoplay loop muted poster="/assets/video_poster.webp" class="h-full w-full object-cover hero-video">
       <source src="/assets/waves.webm" type="video/webm" />
     </video>
     <div class="darken absolute inset-0 bg-black/20"></div>
@@ -35,10 +35,40 @@ import AnimatedText from '@/components/blocks/AnimatedText.astro';
       <div
         class="hover:text-primary absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce text-white transition-colors"
       >
-        <a href="#tech" data-scroll-to aria-label="Scroll to About section">
+        <a href="#tech" class="scroll-to-link" aria-label="Scroll to About section">
           <ArrowDown size={24} />
         </a>
       </div>
     </div>
   </div>
 </div>
+
+<script>
+  const video = document.querySelector<HTMLVideoElement>('.hero-video');
+  let ticking = false;
+  window.addEventListener(
+    'scroll',
+    () => {
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          if (video) {
+            video.style.transform = `translateY(${window.scrollY * 0.3}px)`;
+          }
+          ticking = false;
+        });
+        ticking = true;
+      }
+    },
+    { passive: true }
+  );
+
+  document.querySelectorAll<HTMLAnchorElement>('.scroll-to-link').forEach((el) => {
+    el.addEventListener('click', (e) => {
+      e.preventDefault();
+      const href = el.getAttribute('href');
+      if (href?.startsWith('#')) {
+        document.querySelector(href)?.scrollIntoView({ behavior: 'smooth' });
+      }
+    });
+  });
+</script>

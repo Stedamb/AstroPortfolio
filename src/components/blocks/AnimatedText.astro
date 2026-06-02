@@ -18,9 +18,12 @@ const chars = Array.from(text);
 <style>
   span {
     display: inline-block;
-    transform: translateY(100%);
-    opacity: 0;
-    transition: transform 1s cubic-bezier(0.77, 0, 0.175, 1), opacity 1s cubic-bezier(0.77, 0, 0.175, 1);
+    clip-path: polygon(0 0, 0 0, 0 100%, 0 100%);
+    transition: clip-path 1s cubic-bezier(0.77, 0, 0.175, 1);
+  }
+
+  span.revealed {
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
   }
 </style>
 
@@ -34,9 +37,7 @@ const chars = Array.from(text);
       chars.forEach((char, i) => {
         const ms = (baseDelay + i * 0.08) * 1000;
         setTimeout(() => {
-          const el = char as HTMLElement;
-          el.style.transform = 'translateY(0)';
-          el.style.opacity = '1';
+          char.classList.add('revealed');
         }, ms);
       });
     });

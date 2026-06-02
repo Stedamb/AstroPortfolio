@@ -3,7 +3,6 @@ import Navbar from '@/components/layout/Navbar.astro';
 import Footer from '@/components/layout/Footer.astro';
 import GTM from '@/components/seo/GTM.astro';
 import CookieConsent from '@/components/seo/CookieConsent.astro';
-import ScrollAnimations from '@/components/scroll/ScrollAnimations.astro';
 import { ClientRouter } from 'astro:transitions';
 import { Toaster } from '@/components/ui/toaster';
 import { site, jsonLd } from '@/data/site';
@@ -77,12 +76,11 @@ const jsonLdHtml = JSON.stringify(jsonLd);
   <body>
     <GTM />
     <CookieConsent />
-    <ScrollAnimations />
     <Navbar />
     <main>
       <slot />
     </main>
     <Footer />
-    <Toaster client:load />
+    <Toaster client:idle />
   </body>
 </html>

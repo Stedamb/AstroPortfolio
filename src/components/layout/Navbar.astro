@@ -9,7 +9,7 @@ const navRoutes = isHome ? routes : [{ name: 'Home', href: '/' }];
 
 <div id="navbar" class="absolute top-0 left-0 z-50 w-full transform transition-all duration-300">
   {/* Mobile Menu */}
-  <MobileMenu client:load />
+  <MobileMenu client:idle />
 
   {/* Desktop Menu */}
   <div class="hidden justify-center gap-4 p-6 lg:flex">
@@ -18,9 +18,8 @@ const navRoutes = isHome ? routes : [{ name: 'Home', href: '/' }];
         <Button
           variant="link"
           size="sm"
-          class="px-2 text-2xl opacity-90"
+          class="nav-scroll-to px-2 text-2xl opacity-90"
           href={isHome || route.href.startsWith('/') ? route.href : '/' + route.href}
-          data-scroll-to
         >
           {route.name}
         </Button>
@@ -31,31 +30,23 @@ const navRoutes = isHome ? routes : [{ name: 'Home', href: '/' }];
 
 <script>
   const navbar = document.getElementById('navbar');
-  const getScrollY = () => {
-    const m = document.documentElement.style.transform.match(/translate3d\(0px,\s*(-?\d+)/);
-    return m ? Math.abs(parseInt(m[1])) : window.scrollY;
-  };
-  let lastScroll = getScrollY();
+  let lastScroll = 0;
 
   const handleScroll = () => {
-    const currentScroll = getScrollY();
+    const currentScroll = window.scrollY;
 
     if (currentScroll > window.innerHeight * 0.8) {
-      // After 80%, show navbar with animation
       navbar?.classList.remove('absolute', 'hidden');
       navbar?.classList.add('fixed', 'bg-background/80', 'backdrop-blur-lg', 'shadow-md');
 
       if (currentScroll < lastScroll) {
-        // Scrolling up after 80%
         navbar?.classList.remove('-translate-y-full');
         navbar?.classList.add('translate-y-0');
       } else {
-        // Scrolling down after 80%
         navbar?.classList.remove('translate-y-0');
         navbar?.classList.add('-translate-y-full');
       }
     } else if (currentScroll > window.innerHeight * 0.5) {
-      // Between 50% and 80%, hide navbar
       navbar?.classList.remove('absolute', 'translate-y-0');
       navbar?.classList.add(
         'hidden',
@@ -66,7 +57,6 @@ const navRoutes = isHome ? routes : [{ name: 'Home', href: '/' }];
         'shadow-md'
       );
     } else {
-      // Before 50%, show navbar at top
       navbar?.classList.remove(
         'hidden',
         'fixed',
@@ -82,5 +72,15 @@ const navRoutes = isHome ? routes : [{ name: 'Home', href: '/' }];
     lastScroll = currentScroll;
   };
 
-  window.addEventListener('scroll', handleScroll);
+  window.addEventListener('scroll', handleScroll, { passive: true });
+
+  document.querySelectorAll('.nav-scroll-to').forEach((el) => {
+    el.addEventListener('click', (e) => {
+      e.preventDefault();
+      const href = el.getAttribute('href');
+      if (href?.startsWith('#')) {
+        document.querySelector(href)?.scrollIntoView({ behavior: 'smooth' });
+      }
+    });
+  });
 </script>
