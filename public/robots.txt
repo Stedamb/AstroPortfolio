@@ -7,3 +7,5 @@ Disallow: /api/
 
 # Host
 Host: https://www.stedamb.it
+
+Sitemap: https://www.stedamb.it/sitemap-index.xml
