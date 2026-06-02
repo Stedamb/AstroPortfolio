@@ -1,0 +1,37 @@
+# Stefano D'Ambrosio — Portfolio
+
+> Front End Developer building modern web experiences.
+
+## About
+
+Full-stack developer specializing in Astro, React, TypeScript, and modern web technologies. Based in Italy, working freelance.
+
+## Links
+
+- GitHub: https://github.com/Stedamb
+- LinkedIn: https://linkedin.com/in/ste-damb
+- Email: stedamb@gmail.com
+
+## Projects
+
+- **AnimaNoire Tattoo Atelier** — Website for a tattoo shop built with Astro and Sanity CMS.
+  - Demo: http://animanoire.it
+  - Source: https://github.com/Stedamb/AnimaNoire/tree/astro-sanity
+
+- **Next Blog** — Personal blog built with Next.js and Sanity CMS.
+  - Demo: http://stedamb.vercel.app
+  - Source: https://github.com/Stedamb/next-blog
+
+- **Video Portfolio** — Video portfolio built with Astro.
+  - Demo: http://video-journal.vercel.app
+  - Source: https://github.com/Stedamb/Videomaker-portfolio/tree/dev
+
+## Tech Stack
+
+Astro, React, TypeScript, Tailwind CSS, Motion, Node.js, Sanity CMS, Supabase
+
+## Pages
+
+- Home: https://www.stedamb.it
+- Privacy Policy: https://www.stedamb.it/privacy-policy
+- Cookie Policy: https://www.stedamb.it/cookie-policy

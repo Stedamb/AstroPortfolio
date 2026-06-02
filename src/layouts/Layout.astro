@@ -5,7 +5,7 @@ import GTM from '@/components/seo/GTM.astro';
 import CookieConsent from '@/components/seo/CookieConsent.astro';
 import { ClientRouter } from 'astro:transitions';
 import { Toaster } from '@/components/ui/toaster';
-import { site, socialLinks } from '@/data/site';
+import { site, socialLinks, jsonLd } from '@/data/site';
 import '@/styles/globals.css';
 
 interface Props {
@@ -22,7 +22,7 @@ const {
   canonicalURL = new URL(Astro.url.pathname, Astro.site).href,
 } = Astro.props;
 
-// Get the canonical URL
+const jsonLdHtml = JSON.stringify(jsonLd);
 ---
 
 <!doctype html>
@@ -63,23 +63,7 @@ const {
     <meta name="google-site-verification" content="O1CJVpBGxZrGOeVbeQ-spnPWxLJPx7lZ0-19ekTldi0" />
 
     <!-- Structured Data (JSON-LD) -->
-    <script type="application/ld+json" is:inline>
-      {
-        "@context": "https://schema.org",
-        "@type": "Person",
-        "name": {site.name},
-        "url": {site.url},
-        "image": {`${site.url}/assets/og-image.png`},
-        "sameAs": [{socialLinks.github}, {socialLinks.linkedin}],
-        "jobTitle": "Front End Developer",
-        "worksFor": {
-          "@type": "Organization",
-          "name": "Freelance"
-        },
-        "description": {site.description},
-        "email": {site.email}
-      }
-    </script>
+    <script type="application/ld+json" is:inline set:html={jsonLdHtml}></script>
 
     <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon.png" />
     <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon.png" />

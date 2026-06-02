@@ -21,4 +21,20 @@ export const socialLinks = {
   vercel: 'http://stedamb.vercel.app',
 } as const;
 
+export const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  name: site.name,
+  url: site.url,
+  image: `${site.url}/assets/og-image.png`,
+  sameAs: [socialLinks.github, socialLinks.linkedin],
+  jobTitle: 'Front End Developer',
+  worksFor: {
+    '@type': 'Organization',
+    name: 'Freelance',
+  },
+  description: site.description,
+  email: site.email,
+} as const;
+
 export default site;
