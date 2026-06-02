@@ -3,7 +3,6 @@
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
 import * as z from 'zod';
-import { Button } from '@/components/ui/button';
 import { Form, FormControl, FormField, FormItem, FormMessage } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
@@ -169,16 +168,14 @@ export default function ContactForm() {
           </Label>
         </div>
 
-        <Button
+        <button
           type="submit"
-          size="lg"
-          variant="glass"
-          className="flex w-full flex-none items-center justify-center gap-2 rounded-lg border border-white/20 bg-linear-to-br from-blue-500/10 to-cyan-500/10 py-6 transition-colors duration-200 hover:border-cyan-600 hover:bg-white/20"
           disabled={isSubmitting}
+          className="text-md cursor-pointer font-normal inline-flex w-full flex-none items-center justify-center gap-2 whitespace-nowrap rounded-lg border border-white/20 bg-linear-to-br from-blue-500/10 to-cyan-500/10 text-foreground/90 shadow-xs hover:text-foreground px-6 py-3 transition-colors duration-200 hover:border-cyan-600 hover:bg-white/20 focus-visible:outline-hidden focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0"
         >
           <Mail className="h-5 w-5" />
           {isSubmitting ? 'Sending...' : 'Send Message'}
-        </Button>
+        </button>
       </form>
     </Form>
   );

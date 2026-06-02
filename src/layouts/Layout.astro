@@ -5,6 +5,7 @@ import GTM from '@/components/seo/GTM.astro';
 import CookieConsent from '@/components/seo/CookieConsent.astro';
 import { ClientRouter } from 'astro:transitions';
 import { Toaster } from '@/components/ui/toaster';
+import { site, socialLinks } from '@/data/site';
 import '@/styles/globals.css';
 
 interface Props {
@@ -15,9 +16,9 @@ interface Props {
 }
 
 const {
-  title = "Stefano D'Ambrosio - Portfolio",
-  description = "Portfolio website featuring projects, technologies, and contact information for Stefano D'Ambrosio.",
-  image = '/assets/og-image.png',
+  title = site.title,
+  description = site.description,
+  image = site.image,
   canonicalURL = new URL(Astro.url.pathname, Astro.site).href,
 } = Astro.props;
 
@@ -43,8 +44,8 @@ const {
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:image" content={new URL(image, Astro.site)} />
-    <meta property="og:site_name" content="Stefano D'Ambrosio Portfolio" />
-    <meta property="og:locale" content="en_US" />
+    <meta property="og:site_name" content={`${site.name} Portfolio`} />
+    <meta property="og:locale" content={site.locale} />
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image" />
@@ -52,14 +53,11 @@ const {
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={new URL(image, Astro.site)} />
-    <meta name="twitter:creator" content="@stedamb" />
+    <meta name="twitter:creator" content={site.twitter} />
 
     <!-- Additional SEO -->
-    <meta name="author" content="Stefano D'Ambrosio" />
-    <meta
-      name="keywords"
-      content="Stefano D'Ambrosio, portfolio, web developer, full-stack developer, software engineer"
-    />
+    <meta name="author" content={site.name} />
+    <meta name="keywords" content={site.keywords} />
     <meta name="robots" content="index, follow" />
 
     <meta name="google-site-verification" content="O1CJVpBGxZrGOeVbeQ-spnPWxLJPx7lZ0-19ekTldi0" />
@@ -69,24 +67,24 @@ const {
       {
         "@context": "https://schema.org",
         "@type": "Person",
-        "name": "Stefano D'Ambrosio",
-        "url": "https://www.stedamb.it",
-        "image": "https://www.stedamb.it/assets/og-image.png",
-        "sameAs": ["https://github.com/Stedamb", "https://linkedin.com/in/ste-damb"],
+        "name": {site.name},
+        "url": {site.url},
+        "image": {`${site.url}/assets/og-image.png`},
+        "sameAs": [{socialLinks.github}, {socialLinks.linkedin}],
         "jobTitle": "Front End Developer",
         "worksFor": {
           "@type": "Organization",
           "name": "Freelance"
         },
-        "description": "Portfolio website featuring projects, technologies, and contact information for Stefano D'Ambrosio.",
-        "email": "stedamb@protonmail.com"
+        "description": {site.description},
+        "email": {site.email}
       }
     </script>
 
     <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon.png" />
     <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon.png" />
     <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png" />
-    <meta name="theme-color" content="#000000" />
+    <meta name="theme-color" content={site.themeColor} />
 
     <ClientRouter />
   </head>

@@ -2,6 +2,7 @@
 import { Github, Linkedin } from 'lucide-react';
 import Card from '@/components/ui/card.astro';
 import ContactForm from '../react/ContactForm';
+import { socialLinks } from '@/data/site';
 ---
 
 <section id="contact" class="relative overflow-hidden py-20">
@@ -52,7 +53,7 @@ import ContactForm from '../react/ContactForm';
             </div>
             <div class="grid grid-cols-2 gap-4">
               <a
-                href="https://github.com/Stedamb"
+                href={socialLinks.github}
                 target="_blank"
                 rel="noopener noreferrer"
                 class="group/bento relative flex flex-col items-center justify-center gap-2 rounded-lg border border-white/12.5 bg-white/5 bg-linear-to-br from-zinc-500/10 to-zinc-800/10 p-4 transition-colors duration-200 hover:border-zinc-400 hover:bg-white/10"
@@ -61,7 +62,7 @@ import ContactForm from '../react/ContactForm';
                 <span class="font-medium">GitHub</span>
               </a>
               <a
-                href="https://linkedin.com/in/ste-damb"
+                href={socialLinks.linkedin}
                 target="_blank"
                 rel="noopener noreferrer"
                 class="group/bento relative flex flex-col items-center justify-center gap-2 rounded-lg border border-white/12.5 bg-white/5 bg-linear-to-br from-blue-500/10 to-cyan-500/10 p-4 transition-colors duration-200 hover:border-cyan-600 hover:bg-white/10"

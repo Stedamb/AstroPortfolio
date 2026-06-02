@@ -1,5 +1,5 @@
 ---
-import { Button } from '@/components/ui/button';
+import Button from '@/components/ui/button.astro';
 import MobileMenu from '@/components/react/MobileMenu';
 import { routes } from '@/data/routes';
 
@@ -15,10 +15,13 @@ const navRoutes = isHome ? routes.filter((r) => r.href !== '/') : routes;
   <div class="hidden justify-center gap-4 p-6 lg:flex">
     {
       navRoutes.map((route) => (
-        <Button variant="link" size="sm" asChild>
-          <a class="text-foreground px-2 text-2xl opacity-90" href={isHome || route.href.startsWith('/') ? route.href : '/' + route.href}>
-            {route.name}
-          </a>
+        <Button
+          variant="link"
+          size="sm"
+          class="px-2 text-2xl opacity-90"
+          href={isHome || route.href.startsWith('/') ? route.href : '/' + route.href}
+        >
+          {route.name}
         </Button>
       ))
     }
