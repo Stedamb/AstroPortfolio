@@ -1,18 +1,14 @@
 ---
+import Button from '@/components/ui/button.astro';
 import Layout from '@/layouts/Layout.astro';
 ---
 
 <Layout title="404 - Page Not Found">
   <section
-    class="flex min-h-svh flex-col items-center justify-center bg-[radial-gradient(at_47%_33%,hsl(0,0%,100%)_0,transparent_59%)] opacity-80"
+    class="flex min-h-svh flex-col items-center justify-center bg-[radial-gradient(at_47%_33%,hsl(0,0%,80%)_0,transparent_49%)] opacity-80"
   >
     <h1 class="font-serif text-8xl italic">404</h1>
-    <p class="mt-4 text-foreground/70">Page not found</p>
-    <a
-      href="/"
-      class="mt-8 inline-flex items-center gap-2 rounded-lg border border-white/12.5 bg-white/5 px-6 py-3 text-sm transition-colors hover:bg-white/10"
-    >
-      Go back home
-    </a>
+    <p class="text-foreground/70 mt-4">Page not found</p>
+    <Button variant="glass" href="/" class="mt-8"> Go back home </Button>
   </section>
 </Layout>

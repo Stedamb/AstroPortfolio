@@ -1,79 +1,142 @@
 ---
 import Layout from '@/layouts/Layout.astro';
+import { site } from '@/data/site';
 ---
 
 <Layout title="Privacy Policy - Stefano D'Ambrosio">
   <section class="bg-linear-to-br from-blue-500/[0.03] to-cyan-500/[0.03]">
     <div class="mx-auto max-w-3xl px-6 py-32">
-    <h1 class="mb-8 text-center font-serif text-5xl font-bold">Privacy Policy</h1>
-    <p class="mb-12 text-center text-foreground/70">Last updated: June 2026</p>
+      <h1 class="mb-8 text-center font-serif text-5xl font-bold">Privacy Policy</h1>
+      <p class="mb-12 text-center text-foreground/70">Last updated: June 2026</p>
 
-    <div class="space-y-6 text-foreground/80 leading-relaxed">
-      <section>
-        <h2 class="mb-3 text-2xl font-semibold text-foreground">Information We Collect</h2>
-        <p>
-          This site uses <strong>Google Tag Manager</strong> to manage analytics. When you accept
-          cookies, anonymized usage data (pages visited, browser type, session duration) may be
-          collected via Google Analytics. No personally identifiable information is collected unless
-          you voluntarily submit it through the contact form.
-        </p>
-      </section>
+      <div class="space-y-6 text-foreground/80 leading-relaxed">
+        <section>
+          <h2 class="mb-3 text-2xl font-semibold text-foreground">Data Controller</h2>
+          <p>
+            {site.name} — {site.email}. This is a personal portfolio site. I act
+            as the data controller for any personal data collected through this website.
+          </p>
+        </section>
 
-      <section>
-        <h2 class="mb-3 text-2xl font-semibold text-foreground">Contact Form</h2>
-        <p>
-          When you submit the contact form, we receive your name, email address, and message. This
-          data is sent via email and is not stored in any database. We use it solely to respond to
-          your inquiry and never share it with third parties.
-        </p>
-      </section>
+        <section>
+          <h2 class="mb-3 text-2xl font-semibold text-foreground">Information You Submit Voluntarily</h2>
+          <p>
+            When you use the <strong>contact form</strong>, I collect your name, email address,
+            subject, and message. This data is sent to my email inbox via <strong>Resend</strong>,
+            a third-party email delivery service. The data is <strong>not stored</strong> in any
+            database on this site.
+          </p>
+          <p class="mt-2">
+            Resend acts as a data processor. Your data is transmitted securely over HTTPS and
+            retained in my email inbox until I delete it or you request deletion. I use this
+            information solely to respond to your inquiry and never share it with other parties.
+          </p>
+        </section>
 
-      <section>
-        <h2 class="mb-3 text-2xl font-semibold text-foreground">Data Retention</h2>
-        <p>
-          Contact form submissions are retained in our email inbox until you request deletion.
-          Analytics data is retained for 26 months per Google Analytics' default retention policy.
-        </p>
-      </section>
+        <section>
+          <h2 class="mb-3 text-2xl font-semibold text-foreground">Information Collected Automatically</h2>
+          <p>
+            This site uses <strong>Google Tag Manager</strong> to deploy <strong>Google Analytics 4</strong>.
+            These scripts only load after you explicitly accept cookies via the consent banner.
+            When active, Google Analytics collects anonymized usage data such as:
+          </p>
+          <ul class="list-disc space-y-1 pl-6">
+            <li>Pages visited and interaction events</li>
+            <li>Browser type, device type, and operating system</li>
+            <li>Approximate geographic location (city-level, anonymized)</li>
+            <li>Session duration and referral source</li>
+          </ul>
+          <p class="mt-2">
+            IP addresses are anonymized and not linked to any personally identifiable information.
+            No personal data is collected through analytics without your consent.
+          </p>
+        </section>
 
-      <section>
-        <h2 class="mb-3 text-2xl font-semibold text-foreground">Your Rights</h2>
-        <p>Under the GDPR, you have the right to:</p>
-        <ul class="list-disc space-y-1 pl-6">
-          <li>Request access to your personal data</li>
-          <li>Request correction or deletion of your data</li>
-          <li>Withdraw consent at any time</li>
-          <li>File a complaint with your local data protection authority</li>
-        </ul>
-      </section>
+        <section>
+          <h2 class="mb-3 text-2xl font-semibold text-foreground">Legal Basis for Processing</h2>
+          <ul class="list-disc space-y-1 pl-6">
+            <li>
+              <strong>Contact form data</strong> — processed based on your consent (article 6(1)(a)
+              GDPR) and the Legitimate Interest to respond to your inquiry.
+            </li>
+            <li>
+              <strong>Analytics data</strong> — processed based on your consent (article 6(1)(a)
+              GDPR), given through the cookie consent banner.
+            </li>
+          </ul>
+        </section>
 
-      <section>
-        <h2 class="mb-3 text-2xl font-semibold text-foreground">Third-Party Services</h2>
-        <p>
-          This site uses Google Tag Manager and Google Analytics. Google's use of this data is
-          governed by their
-          <a
-            href="https://policies.google.com/privacy"
-            class="text-foreground underline-offset-4 hover:underline"
-          >
-            Privacy Policy
-          </a>.
-        </p>
-      </section>
+        <section>
+          <h2 class="mb-3 text-2xl font-semibold text-foreground">Data Retention</h2>
+          <ul class="list-disc space-y-1 pl-6">
+            <li>
+              <strong>Contact form submissions</strong> — retained in my email inbox until you
+              request deletion. You can ask me to delete your data at any time.
+            </li>
+            <li>
+              <strong>Analytics data</strong> — retained for 26 months per Google Analytics'
+              default retention policy, then automatically deleted.
+            </li>
+            <li>
+              <strong>Consent preference cookie</strong> — stored for 12 months.
+            </li>
+          </ul>
+        </section>
 
-      <section>
-        <h2 class="mb-3 text-2xl font-semibold text-foreground">Contact</h2>
-        <p>
-          For questions or requests regarding your data, reach out at
-          <a
-            href="mailto:stedamb@protonmail.com"
-            class="text-foreground underline-offset-4 hover:underline"
-          >
-            stedamb@protonmail.com
-          </a>.
-        </p>
-      </section>
-    </div>
+        <section>
+          <h2 class="mb-3 text-2xl font-semibold text-foreground">Third-Party Processors</h2>
+          <ul class="list-disc space-y-1 pl-6">
+            <li>
+              <strong>Resend</strong> (resend.com) — email delivery for contact form submissions.
+              <a
+                href="https://resend.com/privacy"
+                class="text-foreground underline-offset-4 hover:underline"
+              >Privacy Policy</a>.
+            </li>
+            <li>
+              <strong>Google</strong> (Tag Manager & Analytics 4) — analytics tracking, only
+              activated after consent.
+              <a
+                href="https://policies.google.com/privacy"
+                class="text-foreground underline-offset-4 hover:underline"
+              >Privacy Policy</a>.
+            </li>
+            <li>
+              <strong>Vercel</strong> (vercel.com) — hosting provider. Standard server logs may
+              include IP addresses.
+              <a
+                href="https://vercel.com/legal/privacy-policy"
+                class="text-foreground underline-offset-4 hover:underline"
+              >Privacy Policy</a>.
+            </li>
+          </ul>
+        </section>
+
+        <section>
+          <h2 class="mb-3 text-2xl font-semibold text-foreground">Your Rights (GDPR)</h2>
+          <p>You have the right to:</p>
+          <ul class="list-disc space-y-1 pl-6">
+            <li>Request access to your personal data</li>
+            <li>Request correction or deletion of your data</li>
+            <li>Restrict or object to processing</li>
+            <li>Withdraw consent at any time (without affecting the lawfulness of processing before withdrawal)</li>
+            <li>Data portability</li>
+            <li>File a complaint with your local data protection authority</li>
+          </ul>
+        </section>
+
+        <section>
+          <h2 class="mb-3 text-2xl font-semibold text-foreground">Contact</h2>
+          <p>
+            For any requests regarding your personal data, reach out at
+            <a
+              href={`mailto:${site.email}`}
+            >
+              {site.email}
+            </a>.
+          </p>
+        </section>
+      </div>
     </div>
   </section>
 </Layout>
