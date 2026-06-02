@@ -2,6 +2,7 @@
 const technologies = [
   {
     name: '🚀 Astro',
+    shortName: 'Astro',
     description: 'The all-in-one web framework designed for speed and content-focused websites.',
     outline: '/sprites/astro-outline.svg',
     filled: '/sprites/astro.svg',
@@ -10,6 +11,7 @@ const technologies = [
   },
   {
     name: '<span class="filter grayscale">🔼</span> Next.js',
+    shortName: 'Next.js',
     description: 'The React framework for production, offering hybrid static & server rendering.',
     outline: '/sprites/nextjs-outline.svg',
     filled: '/sprites/nextjs.svg',
@@ -18,6 +20,7 @@ const technologies = [
   },
   {
     name: '⚛️ React',
+    shortName: 'React',
     description:
       'The most popular JavaScript library for building user interfaces. It allows you to create dynamic and interactive web applications with ease.',
     outline: '/sprites/react-outline.svg',
@@ -60,12 +63,20 @@ const technologies = [
                 <div class="-z-10 lg:relative lg:h-[100px] lg:w-[200px] lg:overflow-hidden">
                   <img
                     src={tech.outline}
-                    alt={`${tech.name} Outline`}
+                    alt={`${tech.shortName} logo outline`}
+                    title={`${tech.shortName} logo`}
+                    loading="lazy"
+                    width="200"
+                    height="100"
                     class="absolute inset-0 h-full w-full scale-150 transform object-contain opacity-0 transition-opacity duration-300 lg:opacity-100 lg:group-hover:opacity-0"
                   />
                   <img
                     src={tech.filled}
-                    alt={tech.name}
+                    alt={`${tech.shortName} logo`}
+                    title={`${tech.shortName} logo`}
+                    loading="lazy"
+                    width="200"
+                    height="100"
                     class="absolute inset-0 h-full w-full scale-150 transform object-contain opacity-10 transition-opacity duration-300 group-hover:opacity-20 lg:opacity-0 lg:group-hover:opacity-100"
                   />
                 </div>
