@@ -2,8 +2,9 @@
 User-agent: *
 Allow: /
 
-# Disallow crawling of API routes and assets
+# Disallow crawling of API routes and decorative assets
 Disallow: /api/
+Disallow: /assets/waves.webm
 
 # Host
 Host: https://www.stedamb.it

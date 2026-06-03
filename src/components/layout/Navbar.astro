@@ -1,6 +1,6 @@
 ---
 import Button from '@/components/ui/button.astro';
-import MobileMenu from '../react/MobileMenu.astro';
+import MobileMenu from '@/components/layout/MobileMenu.astro';
 import { routes } from '@/data/routes';
 
 const isHome = Astro.url.pathname === '/';
@@ -29,58 +29,60 @@ const navRoutes = isHome ? routes : [{ name: 'Home', href: '/' }];
 </div>
 
 <script>
-  const navbar = document.getElementById('navbar');
-  let lastScroll = 0;
+  document.addEventListener('astro:page-load', () => {
+    const navbar = document.getElementById('navbar');
+    let lastScroll = 0;
 
-  const handleScroll = () => {
-    const currentScroll = window.scrollY;
+    const handleScroll = () => {
+      const currentScroll = window.scrollY;
 
-    if (currentScroll > window.innerHeight * 0.8) {
-      navbar?.classList.remove('absolute', 'hidden');
-      navbar?.classList.add('fixed', 'bg-background/80', 'backdrop-blur-lg', 'shadow-md');
+      if (currentScroll > window.innerHeight * 0.8) {
+        navbar?.classList.remove('absolute', 'hidden');
+        navbar?.classList.add('fixed', 'bg-background/80', 'backdrop-blur-lg', 'shadow-md');
 
-      if (currentScroll < lastScroll) {
-        navbar?.classList.remove('-translate-y-full');
-        navbar?.classList.add('translate-y-0');
+        if (currentScroll < lastScroll) {
+          navbar?.classList.remove('-translate-y-full');
+          navbar?.classList.add('translate-y-0');
+        } else {
+          navbar?.classList.remove('translate-y-0');
+          navbar?.classList.add('-translate-y-full');
+        }
+      } else if (currentScroll > window.innerHeight * 0.5) {
+        navbar?.classList.remove('absolute', 'translate-y-0');
+        navbar?.classList.add(
+          'hidden',
+          'fixed',
+          '-translate-y-full',
+          'bg-background/80',
+          'backdrop-blur-lg',
+          'shadow-md'
+        );
       } else {
-        navbar?.classList.remove('translate-y-0');
-        navbar?.classList.add('-translate-y-full');
+        navbar?.classList.remove(
+          'hidden',
+          'fixed',
+          '-translate-y-full',
+          'translate-y-0',
+          'bg-background/80',
+          'backdrop-blur-lg',
+          'shadow-md'
+        );
+        navbar?.classList.add('absolute');
       }
-    } else if (currentScroll > window.innerHeight * 0.5) {
-      navbar?.classList.remove('absolute', 'translate-y-0');
-      navbar?.classList.add(
-        'hidden',
-        'fixed',
-        '-translate-y-full',
-        'bg-background/80',
-        'backdrop-blur-lg',
-        'shadow-md'
-      );
-    } else {
-      navbar?.classList.remove(
-        'hidden',
-        'fixed',
-        '-translate-y-full',
-        'translate-y-0',
-        'bg-background/80',
-        'backdrop-blur-lg',
-        'shadow-md'
-      );
-      navbar?.classList.add('absolute');
-    }
 
-    lastScroll = currentScroll;
-  };
+      lastScroll = currentScroll;
+    };
 
-  window.addEventListener('scroll', handleScroll, { passive: true });
+    window.addEventListener('scroll', handleScroll, { passive: true });
 
-  document.querySelectorAll('.nav-scroll-to').forEach((el) => {
-    el.addEventListener('click', (e) => {
-      e.preventDefault();
-      const href = el.getAttribute('href');
-      if (href?.startsWith('#')) {
-        document.querySelector(href)?.scrollIntoView({ behavior: 'smooth' });
-      }
+    document.querySelectorAll('.nav-scroll-to').forEach((el) => {
+      el.addEventListener('click', (e) => {
+        e.preventDefault();
+        const href = el.getAttribute('href');
+        if (href?.startsWith('#')) {
+          document.querySelector(href)?.scrollIntoView({ behavior: 'smooth' });
+        }
+      });
     });
   });
 </script>

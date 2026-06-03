@@ -1,0 +1,122 @@
+---
+import { routes } from '@/data/routes';
+
+const isHome = Astro.url.pathname === '/';
+const navRoutes = isHome ? routes : [{ name: 'Home', href: '/' }];
+---
+
+<div class="lg:hidden" id="mobile-menu">
+  <button
+    id="menu-toggle"
+    class="text-foreground hover:text-muted-foreground relative z-50 p-4 opacity-75 transition-transform focus:outline-hidden active:scale-95"
+    aria-label="Toggle Menu"
+  >
+    <div id="menu-icon" class="relative size-12">
+      <img
+        id="icon-hamburger"
+        src="/sprites/hamburger.svg"
+        alt=""
+        aria-hidden="true"
+        class="absolute inset-0 size-12 transition-opacity duration-300"
+      />
+      <img
+        id="icon-back"
+        src="/sprites/back.svg"
+        alt=""
+        aria-hidden="true"
+        class="absolute inset-0 size-12 opacity-0 transition-opacity duration-300"
+      />
+    </div>
+  </button>
+
+  <div
+    id="menu-overlay"
+    class="pointer-events-none fixed inset-0 min-h-screen bg-black opacity-0 transition-opacity duration-300"
+  >
+    <div class="flex min-h-screen flex-col items-center justify-center">
+      <nav id="menu-nav" class="flex flex-col items-center gap-12 py-8">
+        {
+          navRoutes.map((item, i) => (
+            <a
+              href={isHome || item.href.startsWith('/') ? item.href : '/' + item.href}
+              class="menu-link group relative font-serif text-2xl italic"
+            >
+              <div class="overflow-hidden">
+                <span class="menu-word" data-item={i}>
+                  {Array.from(item.name).map((char, j) => (
+                    <span class="menu-char" style={`--delay: ${i * 0.12 + j * 0.04}s`}>
+                      {char === ' ' ? '\u00A0' : char}
+                    </span>
+                  ))}
+                </span>
+              </div>
+              <span class="from-primary to-primary/50 absolute -bottom-2 left-0 h-0.5 w-0 bg-linear-to-r transition-all duration-300 group-hover:w-full" />
+            </a>
+          ))
+        }
+      </nav>
+    </div>
+  </div>
+</div>
+
+<style>
+  @keyframes clipReveal {
+    from {
+      clip-path: polygon(0 0, 0 0, 0 100%, 0 100%);
+    }
+    to {
+      clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+    }
+  }
+
+  .menu-char {
+    display: inline-block;
+    clip-path: polygon(0 0, 0 0, 0 100%, 0 100%);
+    will-change: clip-path;
+  }
+
+  #menu-nav.revealed .menu-char {
+    animation: clipReveal 0.7s cubic-bezier(0.3, 0, 0.175, 1) var(--delay) both;
+  }
+</style>
+
+<script>
+  document.addEventListener('astro:page-load', () => {
+    const toggle = document.getElementById('menu-toggle');
+    const overlay = document.getElementById('menu-overlay');
+    const nav = document.getElementById('menu-nav');
+    const iconHamburger = document.getElementById('icon-hamburger') as HTMLImageElement | null;
+    const iconBack = document.getElementById('icon-back') as HTMLImageElement | null;
+    const links = document.querySelectorAll<HTMLAnchorElement>('.menu-link');
+    let isOpen = false;
+
+    function setOpen(open: boolean) {
+      isOpen = open;
+      document.body.style.overflow = open ? 'hidden' : 'unset';
+
+      if (iconHamburger && iconBack) {
+        iconHamburger.style.opacity = open ? '0' : '1';
+        iconBack.style.opacity = open ? '1' : '0';
+      }
+
+      if (open) {
+        overlay?.classList.remove('pointer-events-none', 'opacity-0');
+        overlay?.classList.add('pointer-events-auto', 'opacity-100');
+
+        nav?.classList.remove('revealed');
+        void nav?.offsetHeight;
+        nav?.classList.add('revealed');
+      } else {
+        overlay?.classList.remove('pointer-events-auto', 'opacity-100');
+        overlay?.classList.add('pointer-events-none', 'opacity-0');
+        nav?.classList.remove('revealed');
+      }
+    }
+
+    toggle?.addEventListener('click', () => setOpen(!isOpen));
+
+    links.forEach((link) => {
+      link.addEventListener('click', () => setOpen(false));
+    });
+  });
+</script>
