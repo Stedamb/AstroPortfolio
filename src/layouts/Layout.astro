@@ -24,52 +24,43 @@ const {
   pageType = 'page',
 } = Astro.props;
 
-function buildJsonLd(pageType: string, title: string, url: string) {
-  if (pageType === 'home') {
-    return {
-      '@context': 'https://schema.org',
-      '@graph': [
-        {
-          '@type': 'WebSite',
-          name: site.name,
-          url: site.url,
-          description: site.description,
-          inLanguage: site.locale,
-        },
-        {
-          '@type': 'Person',
-          name: site.name,
-          url: site.url,
-          image: `${site.url}/assets/og-image.png`,
-          sameAs: [socialLinks.github, socialLinks.linkedin],
-          jobTitle: 'Front End Developer',
-          worksFor: {
-            '@type': 'Organization',
-            name: 'Freelance',
-          },
-          description: site.description,
-          email: site.email,
-        },
-      ],
-    };
-  }
+const webSiteSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'WebSite',
+  name: site.title,
+  url: site.url,
+  description: site.description,
+  inLanguage: site.locale,
+};
 
-  return {
-    '@context': 'https://schema.org',
-    '@type': 'WebPage',
-    name: title,
-    url,
-    inLanguage: site.locale,
-    isPartOf: {
-      '@type': 'WebSite',
-      name: site.name,
-      url: site.url,
-    },
-  };
-}
+const personSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  name: site.name,
+  url: site.url,
+  image: `${site.url}/assets/og-image.png`,
+  sameAs: [socialLinks.github, socialLinks.linkedin],
+  jobTitle: 'Front End Developer',
+  worksFor: {
+    '@type': 'Organization',
+    name: 'Freelance',
+  },
+  description: site.description,
+  email: site.email,
+};
 
-const jsonLd = buildJsonLd(pageType, title, canonicalURL);
-const jsonLdHtml = JSON.stringify(jsonLd);
+const webPageSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'WebPage',
+  name: title,
+  url: canonicalURL,
+  inLanguage: site.locale,
+  isPartOf: {
+    '@type': 'WebSite',
+    name: site.name,
+    url: site.url,
+  },
+};
 ---
 
 <!doctype html>
@@ -111,7 +102,14 @@ const jsonLdHtml = JSON.stringify(jsonLd);
     <meta name="google-site-verification" content="O1CJVpBGxZrGOeVbeQ-spnPWxLJPx7lZ0-19ekTldi0" />
 
     <!-- Structured Data (JSON-LD) -->
-    <script type="application/ld+json" is:inline set:html={jsonLdHtml} />
+    {
+      pageType === 'home'
+        ? <>
+            <script type="application/ld+json" set:html={JSON.stringify(webSiteSchema)} />
+            <script type="application/ld+json" set:html={JSON.stringify(personSchema)} />
+          </>
+        : <script type="application/ld+json" set:html={JSON.stringify(webPageSchema)} />
+    }
 
     <link rel="icon" type="image/png" href="/favicon/favicon-96x96.png" sizes="96x96" />
     <link rel="icon" type="image/svg+xml" href="/favicon/favicon.svg" />
