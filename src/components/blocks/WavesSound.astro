@@ -1,0 +1,64 @@
+---
+import { Volume2, VolumeX } from 'lucide-react';
+---
+
+<div class="waves-sound">
+  <button
+    type="button"
+    id="waves-sound-toggle"
+    aria-pressed="false"
+    aria-label="Play ambient waves sound"
+    class="cursor-pointer inline-flex size-11 items-center justify-center rounded-full border border-white/20 bg-white/10 text-white shadow-xs backdrop-blur-xs transition-colors hover:border-white/40 hover:bg-white/20 focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-black/50 focus-visible:outline-hidden active:scale-[.95] [&_svg]:pointer-events-none [&_svg]:size-5 [&_svg]:shrink-0"
+  >
+    <span id="waves-sound-icon-off" aria-hidden="true">
+      <VolumeX />
+    </span>
+    <span id="waves-sound-icon-on" class="hidden" aria-hidden="true">
+      <Volume2 />
+    </span>
+  </button>
+
+  <audio id="waves-sound-audio" loop preload="none">
+    <source src="/assets/waves_sound.webm" type="audio/webm" />
+  </audio>
+</div>
+
+<script>
+  document.addEventListener('astro:page-load', () => {
+    const toggle = document.getElementById('waves-sound-toggle');
+    const audio = document.getElementById('waves-sound-audio') as HTMLAudioElement | null;
+    const iconOff = document.getElementById('waves-sound-icon-off');
+    const iconOn = document.getElementById('waves-sound-icon-on');
+
+    if (!toggle || !audio) return;
+
+    function render(playing: boolean) {
+      toggle!.setAttribute('aria-pressed', String(playing));
+      toggle!.setAttribute(
+        'aria-label',
+        playing ? 'Mute ambient waves sound' : 'Play ambient waves sound'
+      );
+      iconOff?.classList.toggle('hidden', playing);
+      iconOn?.classList.toggle('hidden', !playing);
+    }
+
+    toggle.addEventListener('click', async () => {
+      if (audio.paused) {
+        try {
+          await audio.play();
+        } catch {
+          render(false);
+          return;
+        }
+      } else {
+        audio.pause();
+      }
+    });
+
+    audio.addEventListener('play', () => render(true));
+    audio.addEventListener('pause', () => render(false));
+
+    // Stop playback before a view transition swaps the element away.
+    document.addEventListener('astro:before-swap', () => audio.pause(), { once: true });
+  });
+</script>

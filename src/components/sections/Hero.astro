@@ -2,6 +2,7 @@
 import { ArrowDown } from 'lucide-react';
 import AnimatedButtons from '@/components/blocks/AnimatedButtons.astro';
 import AnimatedText from '@/components/blocks/AnimatedText.astro';
+import WavesSound from '@/components/blocks/WavesSound.astro';
 ---
 
 <div class="lazyload shaded relative h-svh">
@@ -46,6 +47,9 @@ import AnimatedText from '@/components/blocks/AnimatedText.astro';
           <ArrowDown size={24} />
         </a>
       </div>
+    </div>
+    <div class="absolute right-8 bottom-8">
+      <WavesSound />
     </div>
   </div>
 </div>
