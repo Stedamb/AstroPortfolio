@@ -77,11 +77,10 @@ const navRoutes = isHome ? routes : [{ name: 'Home', href: '/' }];
 
     document.querySelectorAll('.nav-scroll-to').forEach((el) => {
       el.addEventListener('click', (e) => {
-        e.preventDefault();
         const href = el.getAttribute('href');
-        if (href?.startsWith('#')) {
-          document.querySelector(href)?.scrollIntoView({ behavior: 'smooth' });
-        }
+        if (!href?.startsWith('#')) return;
+        e.preventDefault();
+        document.querySelector(href)?.scrollIntoView({ behavior: 'smooth' });
       });
     });
   });
