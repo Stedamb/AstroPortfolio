@@ -1,5 +1,5 @@
-import animanoire from '@/assets/animanoire.webp';
-import blog from '@/assets/blog.webp';
+import bigbenchapp from '@/assets/bigbenchapp.webp';
+import daleninbarbershop from '@/assets/daleninbarbershop.webp';
 import videoJournal from '@/assets/video-journal.webp';
 import type { ImageMetadata } from 'astro';
 
@@ -18,22 +18,23 @@ export interface Project {
 
 export const projects: Project[] = [
   {
-    title: 'AnimaNoire Tattoo Atelier',
-    description: 'Website for a tattoo shop. Built with Astro and Sanity CMS.',
-    image: animanoire,
+    title: 'BigBenchApp',
+    description:
+      'A web application for tracking progress in the Big Bench project. Built with Next.js and Supabase.',
+    image: bigbenchapp,
     color: 'pink',
     border: 'hover:border-pink-600',
-    github: 'https://github.com/Stedamb/AnimaNoire/tree/astro-sanity',
-    demo: 'http://animanoire.it',
+    github: 'https://github.com/Stedamb/BigBenchApp',
+    demo: 'https://big-bench-app.vercel.app',
   },
   {
-    title: 'Next Blog',
-    description: 'My personal blog built with Next.js and Sanity CMS.',
-    image: blog,
+    title: 'Da Lenin Barber Shop',
+    description: 'A simple barber shop website built with Astro.',
+    image: daleninbarbershop,
     color: 'green',
     border: 'hover:border-teal-600',
-    github: 'https://github.com/Stedamb/next-blog',
-    demo: 'http://stedamb.vercel.app',
+    github: 'https://github.com/Stedamb/DaLeninBarberShop',
+    demo: 'https://www.daleninbarbershop.it',
   },
   {
     title: 'Video Portfolio',
@@ -42,7 +43,7 @@ export const projects: Project[] = [
     color: 'blue',
     border: 'hover:border-cyan-600',
     github: 'https://github.com/Stedamb/Videomaker-portfolio/tree/dev',
-    demo: 'http://video-journal.vercel.app',
+    demo: 'https://video-journal.vercel.app',
   },
 ];
 

@@ -13,9 +13,9 @@ const colorClasses: Record<string, string> = {
 <div
   {...attrs}
   class={cn(
-    'group relative rounded-lg border border-white/12.5 bg-white/5 transition-colors duration-200 hover:bg-white/10',
+    'group flex flex-col relative rounded-lg border border-white/12.5 bg-white/5 transition-colors duration-200 hover:bg-white/10',
     colorClasses[color],
-    userClass,
+    userClass
   )}
 >
   <slot />

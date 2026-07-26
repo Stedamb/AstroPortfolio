@@ -10,13 +10,10 @@ export const POST: APIRoute = async ({ request }) => {
     const { name, email, subject, message } = data;
 
     if (!name || !email || !subject || !message) {
-      return new Response(
-        JSON.stringify({ message: 'All fields are required' }),
-        {
-          status: 400,
-          headers: { 'Content-Type': 'application/json' },
-        }
-      );
+      return new Response(JSON.stringify({ message: 'All fields are required' }), {
+        status: 400,
+        headers: { 'Content-Type': 'application/json' },
+      });
     }
 
     const { error } = await resend.emails.send({
@@ -41,13 +38,10 @@ export const POST: APIRoute = async ({ request }) => {
     });
 
     if (error) {
-      return new Response(
-        JSON.stringify({ message: 'Failed to send message.' }),
-        {
-          status: 500,
-          headers: { 'Content-Type': 'application/json' },
-        }
-      );
+      return new Response(JSON.stringify({ message: 'Failed to send message.' }), {
+        status: 500,
+        headers: { 'Content-Type': 'application/json' },
+      });
     }
 
     return new Response(

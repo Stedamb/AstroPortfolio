@@ -103,12 +103,14 @@ const webPageSchema = {
 
     <!-- Structured Data (JSON-LD) -->
     {
-      pageType === 'home'
-        ? <>
-            <script type="application/ld+json" set:html={JSON.stringify(webSiteSchema)} />
-            <script type="application/ld+json" set:html={JSON.stringify(personSchema)} />
-          </>
-        : <script type="application/ld+json" set:html={JSON.stringify(webPageSchema)} />
+      pageType === 'home' ? (
+        <>
+          <script type="application/ld+json" set:html={JSON.stringify(webSiteSchema)} />
+          <script type="application/ld+json" set:html={JSON.stringify(personSchema)} />
+        </>
+      ) : (
+        <script type="application/ld+json" set:html={JSON.stringify(webPageSchema)} />
+      )
     }
 
     <link rel="icon" type="image/png" href="/favicon/favicon-96x96.png" sizes="96x96" />

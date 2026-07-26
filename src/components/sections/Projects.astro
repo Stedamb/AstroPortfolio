@@ -22,19 +22,20 @@ import { Image } from 'astro:assets';
     <div class="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
       {
         projects.map((project) => (
-          <Card color={project.color} class={`overflow-hidden p-6 ${project.border}`}>
-            <div class="relative mb-4 h-60 overflow-hidden rounded-lg">
+          <Card color={project.color} class={`overflow-hidden p-4 ${project.border}`}>
+            <div class="relative mb-4 aspect-3/2 overflow-hidden rounded-lg">
               <Image
                 src={project.image}
                 alt={project.title}
                 title={project.title}
-                width={380}
-                height={300}
+                width={800}
+                height={533}
                 loading="lazy"
                 class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
               />
             </div>
-            <div class="relative space-y-4">
+
+            <div class="flex h-full flex-col space-y-4">
               <h3 class="text-xl font-bold">{project.title}</h3>
               <p class="text-muted-foreground">{project.description}</p>
               <div class="mt-auto flex w-full flex-wrap gap-4">

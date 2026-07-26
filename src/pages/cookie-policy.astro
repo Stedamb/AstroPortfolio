@@ -7,11 +7,11 @@ import { site } from '@/data/site';
   <section class="bg-linear-to-br from-blue-500/[0.03] to-cyan-500/[0.03]">
     <div class="mx-auto max-w-3xl px-6 py-32">
       <h1 class="mb-8 text-center font-serif text-5xl font-bold">Cookie Policy</h1>
-      <p class="mb-12 text-center text-foreground/70">Last updated: June 2026</p>
+      <p class="text-foreground/70 mb-12 text-center">Last updated: June 2026</p>
 
-      <div class="space-y-6 text-foreground/80 leading-relaxed">
+      <div class="text-foreground/80 space-y-6 leading-relaxed">
         <section>
-          <h2 class="mb-3 text-2xl font-semibold text-foreground">What Are Cookies</h2>
+          <h2 class="text-foreground mb-3 text-2xl font-semibold">What Are Cookies</h2>
           <p>
             Cookies are small text files stored on your device when you visit a website. They help
             the site remember your preferences and improve your browsing experience.
@@ -19,37 +19,38 @@ import { site } from '@/data/site';
         </section>
 
         <section>
-          <h2 class="mb-3 text-2xl font-semibold text-foreground">How We Use Cookies</h2>
+          <h2 class="text-foreground mb-3 text-2xl font-semibold">How We Use Cookies</h2>
           <p>
-            This site uses <strong>Google Tag Manager (GTM)</strong> to manage analytics tags.
-            GTM is a cookie-less tag management system and does not set cookies by itself. However,
-            the tags it deploys — specifically <strong>Google Analytics 4</strong> — may set cookies
-            for analytics purposes.
+            This site uses <strong>Google Tag Manager (GTM)</strong> to manage analytics tags. GTM is
+            a cookie-less tag management system and does not set cookies by itself. However, the tags
+            it deploys — specifically <strong>Google Analytics 4</strong> — may set cookies for analytics
+            purposes.
           </p>
           <p class="mt-2">
-            GTM and GA4 <strong>only load after you explicitly accept</strong> cookies via the
-            consent banner. If you reject, no tracking scripts or analytics cookies are placed on
-            your device.
+            GTM and GA4 <strong>only load after you explicitly accept</strong> cookies via the consent
+            banner. If you reject, no tracking scripts or analytics cookies are placed on your device.
           </p>
         </section>
 
         <section>
-          <h2 class="mb-3 text-2xl font-semibold text-foreground">Cookies Used on This Site</h2>
+          <h2 class="text-foreground mb-3 text-2xl font-semibold">Cookies Used on This Site</h2>
           <div class="overflow-x-auto">
             <table class="w-full text-left text-sm">
               <thead>
                 <tr class="border-b border-white/12.5">
-                  <th class="py-2 pr-4 font-semibold text-foreground">Cookie</th>
-                  <th class="py-2 pr-4 font-semibold text-foreground">Type</th>
-                  <th class="py-2 pr-4 font-semibold text-foreground">Purpose</th>
-                  <th class="py-2 font-semibold text-foreground">Duration</th>
+                  <th class="text-foreground py-2 pr-4 font-semibold">Cookie</th>
+                  <th class="text-foreground py-2 pr-4 font-semibold">Type</th>
+                  <th class="text-foreground py-2 pr-4 font-semibold">Purpose</th>
+                  <th class="text-foreground py-2 font-semibold">Duration</th>
                 </tr>
               </thead>
               <tbody class="text-foreground/70">
                 <tr class="border-b border-white/12.5">
                   <td class="py-2 pr-4"><code>cookie-consent</code></td>
                   <td class="py-2 pr-4">Functional</td>
-                  <td class="py-2 pr-4">Stores your consent preference so the banner does not reappear</td>
+                  <td class="py-2 pr-4"
+                    >Stores your consent preference so the banner does not reappear</td
+                  >
                   <td class="py-2">12 months</td>
                 </tr>
                 <tr>
@@ -64,7 +65,7 @@ import { site } from '@/data/site';
         </section>
 
         <section>
-          <h2 class="mb-3 text-2xl font-semibold text-foreground">Managing Your Consent</h2>
+          <h2 class="text-foreground mb-3 text-2xl font-semibold">Managing Your Consent</h2>
           <p>
             You can withdraw or change your consent at any time by clearing your browser's cookies
             for this site. The cookie banner will reappear on your next visit, allowing you to make
@@ -73,7 +74,7 @@ import { site } from '@/data/site';
         </section>
 
         <section>
-          <h2 class="mb-3 text-2xl font-semibold text-foreground">Third-Party Services</h2>
+          <h2 class="text-foreground mb-3 text-2xl font-semibold">Third-Party Services</h2>
           <p>
             Google Analytics 4 cookies are managed through Google Tag Manager. Google's use of this
             data is governed by their
@@ -82,8 +83,7 @@ import { site } from '@/data/site';
               class="text-foreground underline-offset-4 hover:underline"
             >
               Privacy Policy
-            </a>.
-            You can learn more about Google Analytics cookies at
+            </a>. You can learn more about Google Analytics cookies at
             <a
               href="https://developers.google.com/analytics/devguides/collection/ga4/cookies"
               class="text-foreground underline-offset-4 hover:underline"
@@ -94,12 +94,10 @@ import { site } from '@/data/site';
         </section>
 
         <section>
-          <h2 class="mb-3 text-2xl font-semibold text-foreground">Contact</h2>
+          <h2 class="text-foreground mb-3 text-2xl font-semibold">Contact</h2>
           <p>
             For questions about this cookie policy, reach out at
-            <a
-              href={`mailto:${site.email}`}
-            >
+            <a href={`mailto:${site.email}`}>
               {site.email}
             </a>.
           </p>

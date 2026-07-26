@@ -1,0 +1,52 @@
+---
+// Rendered only when no consent cookie is set. Kept in its own component because
+// a multi-statement <script> nested inside an Astro `{cond && (...)}` expression
+// is parsed as JSX children, which prettier cannot parse.
+---
+
+<script is:inline>
+  (function () {
+    var key = 'cookie-consent';
+    var el = document.getElementById('cookie-consent-banner');
+
+    function setCookie(value) {
+      document.cookie =
+        key + '=' + value + '; path=/; max-age=' + 60 * 60 * 24 * 365 + '; SameSite=Lax';
+    }
+
+    function hideBanner(callback) {
+      if (!el) return void (callback && callback());
+      el.classList.add('cookie-exit');
+      el.addEventListener(
+        'animationend',
+        function () {
+          el.classList.add('hidden');
+          el.classList.remove('cookie-exit');
+          if (callback) callback();
+        },
+        { once: true }
+      );
+    }
+
+    function showBanner() {
+      if (!el) return;
+      el.classList.remove('hidden');
+      el.classList.add('cookie-enter');
+    }
+
+    function accept() {
+      setCookie('accepted');
+      hideBanner(window.__loadGTM);
+    }
+
+    function reject() {
+      setCookie('rejected');
+      hideBanner();
+    }
+
+    window.__cookieAccept = accept;
+    window.__cookieReject = reject;
+
+    setTimeout(showBanner, 1000);
+  })();
+</script>

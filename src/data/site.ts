@@ -9,8 +9,7 @@ export const site = {
   twitter: '@stedamb',
   themeColor: '#000000',
   locale: 'en_US',
-  keywords:
-    'Stefano D\'Ambrosio, portfolio, web developer, full-stack developer, software engineer',
+  keywords: "Stefano D'Ambrosio, portfolio, web developer, full-stack developer, software engineer",
 } as const;
 
 export const socialLinks = {
