@@ -23,7 +23,7 @@ import { Image } from 'astro:assets';
       {
         projects.map((project) => (
           <Card color={project.color} class={`overflow-hidden p-4 ${project.border}`}>
-            <div class="relative mb-4 aspect-3/2 overflow-hidden rounded-lg">
+            <div class="relative aspect-4/3 overflow-hidden rounded-lg">
               <Image
                 src={project.image}
                 alt={project.title}
@@ -35,31 +35,31 @@ import { Image } from 'astro:assets';
               />
             </div>
 
-            <div class="flex h-full flex-col space-y-4">
+            <div class="flex flex-col gap-3 pt-4">
               <h3 class="text-xl font-bold">{project.title}</h3>
               <p class="text-muted-foreground">{project.description}</p>
-              <div class="mt-auto flex w-full flex-wrap gap-4">
-                <Button
-                  href={project.github}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  variant="glass"
-                  class={`flex flex-1 items-center justify-center gap-2 ${project.border}`}
-                >
-                  <Github className="size-4" />
-                  <span class="font-medium lg:text-sm">GitHub</span>
-                </Button>
-                <Button
-                  href={project.demo}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  variant="glass"
-                  class={`flex flex-1 items-center justify-center gap-2 ${project.border}`}
-                >
-                  <ExternalLink className="size-4" />
-                  <span class="font-medium lg:text-sm">Live Demo</span>
-                </Button>
-              </div>
+            </div>
+            <div class="mt-auto flex w-full flex-wrap gap-4 pt-4">
+              <Button
+                href={project.github}
+                target="_blank"
+                rel="noopener noreferrer"
+                variant="glass"
+                class={`flex flex-1 items-center justify-center gap-2 ${project.border}`}
+              >
+                <Github className="size-4" />
+                <span class="font-medium lg:text-sm">GitHub</span>
+              </Button>
+              <Button
+                href={project.demo}
+                target="_blank"
+                rel="noopener noreferrer"
+                variant="glass"
+                class={`flex flex-1 items-center justify-center gap-2 ${project.border}`}
+              >
+                <ExternalLink className="size-4" />
+                <span class="font-medium lg:text-sm">Live Demo</span>
+              </Button>
             </div>
           </Card>
         ))
